@@ -21,6 +21,8 @@
 	#include <memory>
 	#include <thread>
 
+	#include "Easel/Core/Base.h"
+	#include "Easel/Core/Log.h"
 #endif
 
 #include <stdio.h>
