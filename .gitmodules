@@ -1,0 +1,3 @@
+[submodule "EaselEngine/3rdparty/spdlog"]
+	path = EaselEngine/3rdparty/spdlog
+	url = https://github.com/gabime/spdlog.git

@@ -20,7 +20,9 @@ project "Sandbox"
 
 	includedirs
 	{
+		"%{wks.location}/Easel/3rdparty/spdlog/include",
 		"%{wks.location}/Easel/src",
+		"%{wks.location}/Easel/3rdparty",
 	}
 
 	links

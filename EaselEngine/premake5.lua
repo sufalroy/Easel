@@ -8,6 +8,8 @@ project "EaselEngine"
 	targetdir ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("%{wks.location}/bin/intermediates/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "Precompiled.h"
+	pchsource "src/Precompiled.cpp"
 
 	files
 	{
@@ -25,6 +27,7 @@ project "EaselEngine"
 	includedirs
 	{
 		"src/",
+		"3rdparty/spdlog/include",
 	}
 
 	links
