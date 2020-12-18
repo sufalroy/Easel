@@ -25,6 +25,9 @@ workspace "Easel"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["stb"] = "%{wks.location}/EaselEngine/3rdparty/stb"
 
 group "Dependencies"
 	include "vendor/premake"

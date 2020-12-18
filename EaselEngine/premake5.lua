@@ -28,6 +28,7 @@ project "EaselEngine"
 	{
 		"src/",
 		"3rdparty/spdlog/include",
+		"%{IncludeDir.stb}",
 	}
 
 	links
