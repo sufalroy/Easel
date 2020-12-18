@@ -24,6 +24,7 @@
 	#include "Easel/Core/Base.h"
 	#include "Easel/Core/Log.h"
 	#include "Easel/Core/OS/Memory.h"
+	#include "Easel/Core/Reference.h"
 #endif
 
 #include <stdio.h>
