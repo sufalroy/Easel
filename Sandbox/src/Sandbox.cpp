@@ -1,5 +1,1 @@
-
-
-int main(char argc, char** argv) {
-
-}
+#include <Easel.h>
