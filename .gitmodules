@@ -4,3 +4,6 @@
 [submodule "EaselEngine/3rdparty/stb"]
 	path = EaselEngine/3rdparty/stb
 	url = https://github.com/nothings/stb.git
+[submodule "EaselEngine/3rdparty/glm"]
+	path = EaselEngine/3rdparty/glm
+	url = https://github.com/g-truc/glm.git

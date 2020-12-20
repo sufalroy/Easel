@@ -15,6 +15,8 @@ project "EaselEngine"
 	{
 		"src/**.h",
 		"src/**.cpp",
+		"3rdparty/glm/glm/**.hpp",
+		"3rdparty/glm/glm/**.inl",
 	}
 
 	defines
@@ -29,6 +31,7 @@ project "EaselEngine"
 		"src/",
 		"3rdparty/spdlog/include",
 		"%{IncludeDir.stb}",
+		"%{IncludeDir.glm}",
 	}
 
 	links
@@ -43,7 +46,11 @@ project "EaselEngine"
 		defines 
 		{
 			"EASEL_PLATFORM_WINDOWS",
+			"WIN32_LEAN_AND_MEAN",
 			"_CRT_SECURE_NO_WARNINGS",
+			"_DISABLE_EXTENDED_ALIGNED_STORAGE",
+			"_SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING",
+			"_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING",
 		}
 
 		buildoptions

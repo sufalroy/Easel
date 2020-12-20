@@ -23,6 +23,7 @@ project "Sandbox"
 		"%{wks.location}/EaselEngine/3rdparty/spdlog/include",
 		"%{wks.location}/EaselEngine/src",
 		"%{wks.location}/EaselEngine/3rdparty",
+		"%{IncludeDir.glm}",
 	}
 
 	links
