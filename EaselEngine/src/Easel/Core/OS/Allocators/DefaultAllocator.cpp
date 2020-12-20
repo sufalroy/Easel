@@ -1,17 +1,17 @@
 #include "Precompiled.h"
 #include "Easel/Core/OS/Allocators/DefaultAllocator.h"
-#include "Easel/Core/OS/MemoryManager.h"
 
-#define TRACK_ALLOCATIONS
+#include "Easel/Core/OS/MemoryManager.h"
+//#define TRACK_ALLOCATIONS
 
 #define EASEL_MEMORY_ALIGNMENT 16
-#define EASEL_ALLOC(size)  _aligned_malloc(size, EASEL_MEMORY_ALIGNMENT)
-#define EASEL_FREE(block)  _aligned_free(block);
+#define EASEL_ALLOC(size)	_aligned_malloc(size, EASEL_MEMORY_ALIGNMENT)
+#define EASEL_FREE(block)	_aligned_free(block);
 
 namespace Easel {
 
-	void* DefaultAllocator::Malloc(size_t size, const char* file, int line)
-	{
+	void* DefaultAllocator::Malloc(size_t size, const char* file, int line) {
+
 #ifdef TRACK_ALLOCATIONS
 		EASEL_ASSERT(size < 1024 * 1024 * 1024, "Allocation more than max size");
 
@@ -33,15 +33,17 @@ namespace Easel {
 		result += sizeof(size_t);
 
 		return result;
+
 #else
 		return malloc(size);
-#endif // TRACK_ALLOCATIONS
+#endif
 	}
 
 	void DefaultAllocator::Free(void* location) {
 #ifdef TRACK_ALLOCATIONS
 		uint8_t* memory = ((uint8_t*)location) - sizeof(size_t);
 		if (location && memory) {
+
 			uint8_t* memory = ((uint8_t*)location) - sizeof(size_t);
 			size_t size = *(size_t*)memory;
 			free(((void**)memory));
@@ -51,10 +53,9 @@ namespace Easel {
 		else {
 			free(location);
 		}
+
 #else
 		free(location);
-
-#endif // TRACK_ALLOCATIONS
+#endif
 	}
 }
-
