@@ -20,7 +20,7 @@ namespace Easel {
 		VFS::Get()->Mount("Sounds", root + projectRoot + "/res/sounds");
 		VFS::Get()->Mount("Scripts", root + projectRoot + "/res/scripts");
 		VFS::Get()->Mount("Scenes", root + projectRoot + "/res/scenes");
-		VFS::Get()->Mount("CoreShaders", root + "/EaselEngine/res/EngineShaders");
+		VFS::Get()->Mount("CoreShaders", root + "/Easel/Shaders");
 		*/
 
 		Engine::Get();

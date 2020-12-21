@@ -48,6 +48,6 @@ namespace Easel {
 		std::string& BackSlashesToSlashes(std::string& string);
 		std::string& SlashesToBackSlashes(std::string& string);
 		std::string& RemoveSpaces(std::string& string);
-		std::string Demangle(const std::string& string);
+		//std::string Demangle(const std::string& string);
 	}
 }

@@ -100,3 +100,7 @@
 #endif // EASEL_ENGINE
 
 #define UNIMPLEMENTED { EASEL_ERROR("Unimplemented : {0} : {1}", __FILE__, __LINE__); EASEL_BREAK(); }
+
+#define NONCOPYABLE(type_identifier)								\
+    type_identifier(const type_identifier&) = delete;				\
+    type_identifier& operator=(const type_identifier&) = delete;
