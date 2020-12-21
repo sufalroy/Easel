@@ -1,9 +1,9 @@
-[submodule "EaselEngine/3rdparty/spdlog"]
-	path = EaselEngine/3rdparty/spdlog
+[submodule "Easel/3rdparty/spdlog"]
+	path = Easel/3rdparty/spdlog
 	url = https://github.com/gabime/spdlog.git
-[submodule "EaselEngine/3rdparty/stb"]
-	path = EaselEngine/3rdparty/stb
+[submodule "Easel/3rdparty/stb"]
+	path = Easel/3rdparty/stb
 	url = https://github.com/nothings/stb.git
-[submodule "EaselEngine/3rdparty/glm"]
-	path = EaselEngine/3rdparty/glm
+[submodule "Easel/3rdparty/glm"]
+	path = Easel/3rdparty/glm
 	url = https://github.com/g-truc/glm.git

@@ -1,4 +1,4 @@
-project "EaselEngine"
+project "Easel"
 	kind "StaticLib"
 	language "C++"
 	cppdialect "C++17"

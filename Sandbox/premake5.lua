@@ -20,15 +20,15 @@ project "Sandbox"
 
 	includedirs
 	{
-		"%{wks.location}/EaselEngine/3rdparty/spdlog/include",
-		"%{wks.location}/EaselEngine/src",
-		"%{wks.location}/EaselEngine/3rdparty",
+		"%{wks.location}/Easel/3rdparty/spdlog/include",
+		"%{wks.location}/Easel/src",
+		"%{wks.location}/Easel/3rdparty",
 		"%{IncludeDir.glm}",
 	}
 
 	links
 	{
-		"EaselEngine"
+		"Easel"
 	}
 
 	filter "system:windows"
