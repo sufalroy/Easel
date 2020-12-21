@@ -2,7 +2,6 @@
 
 #include "Easel/Core/Base.h"
 #include "Easel/Events/Event.h"
-#include "Easel/Core/LayerStack.h"
 
 #include <string>
 
@@ -12,13 +11,10 @@ namespace Easel {
 
 	class EASEL_EXPORT Application {
 	public:
-		Application(const std::string& projectRoot = "", const std::string& projectName = "App");
+		Application(const std::string& projectRoot, const std::string& projectName);
 		virtual ~Application();
 
 		void OnEvent(Event& e);
-
-		void PushLayer(Layer* layer);
-		void PushOverlay(Layer* layer);
 
 		void Close();
 
@@ -27,8 +23,6 @@ namespace Easel {
 	private:
 		void Run();
 		
-	private:
-		LayerStack m_LayerStack;
 	private:
 		static Application* s_Instance;
 		friend int ::main(int argc, char** argv);

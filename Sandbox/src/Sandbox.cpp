@@ -2,7 +2,8 @@
 
 class Sandbox : public Easel::Application {
 public:
-	Sandbox() {
+	explicit Sandbox()
+		: Application(std::string("/Sandbox/"), std::string("Sandbox")) {
 
 	}
 
