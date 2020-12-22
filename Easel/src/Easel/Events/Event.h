@@ -33,6 +33,8 @@ namespace Easel {
 #define EVENT_CLASS_CATEGORY(category) virtual uint32_t GetCategoryFlags() const override { return category; }
 
 	class EASEL_EXPORT Event {
+
+		friend class EventDispatcher;
 	public:
 		virtual ~Event() = default;
 		virtual EventType GetEventType() const = 0;
@@ -52,19 +54,20 @@ namespace Easel {
 
 	class EventDispatcher {
 	public:
-		EventDispatcher(Event& event) : m_Event(event) 
-		{
+		EventDispatcher(Event& event)
+			:m_Event(event) {
+
 		}
 
 		template<typename T, typename F>
 		bool Dispatch(const F& func) {
 			if (m_Event.GetEventType() == T::GetStaticType()) {
-
-				m_Event.Handled |= func(static_cast<T&>(m_Event));
+				m_Event.m_Handled = func(static_cast<T&>(m_Event));
 				return true;
 			}
 			return false;
 		}
+
 	private:
 		Event& m_Event;
 	};
