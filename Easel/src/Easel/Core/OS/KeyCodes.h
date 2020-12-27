@@ -1,12 +1,11 @@
 #pragma once
 
+
 namespace Easel
 {
-	using KeyCode = uint16_t;
-
-	namespace Key
+	namespace InputCode
 	{
-		enum : KeyCode
+		enum class Key : uint32_t
 		{
 			// From glfw3.h
 			Space = 32,

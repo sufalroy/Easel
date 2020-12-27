@@ -30,13 +30,19 @@ project "Easel"
 	{
 		"src/",
 		"3rdparty/spdlog/include",
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.stb}",
 		"%{IncludeDir.glm}",
 	}
 
 	links
 	{
-
+		"GLFW",
+		"Glad",
+		"ImGui",
+		"opengl32.lib"
 	}
 
 
@@ -46,6 +52,8 @@ project "Easel"
 		defines 
 		{
 			"EASEL_PLATFORM_WINDOWS",
+			"EASEL_RENDER_API_OPENGL",
+			"EASEL_USE_GLFW_WINDOWS",
 			"WIN32_LEAN_AND_MEAN",
 			"_CRT_SECURE_NO_WARNINGS",
 			"_DISABLE_EXTENDED_ALIGNED_STORAGE",

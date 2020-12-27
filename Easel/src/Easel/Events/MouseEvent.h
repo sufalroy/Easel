@@ -48,21 +48,21 @@ namespace Easel {
 
 	class EASEL_EXPORT MouseButtonEvent : public Event {
 	public:
-		_FORCE_INLINE_ MouseCode GetMouseButton() const { return m_Button; }
+		_FORCE_INLINE_ InputCode::MouseKey GetMouseButton() const { return m_Button; }
 
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput | EventCategoryMouseButton)
 	protected:
-		MouseButtonEvent(const MouseCode button) : m_Button(button) {}
-		MouseCode m_Button;
+		MouseButtonEvent(const InputCode::MouseKey button) : m_Button(button) {}
+		InputCode::MouseKey m_Button;
 	};
 
 	class EASEL_EXPORT MouseButtonPressedEvent : public MouseButtonEvent {
 	public:
-		MouseButtonPressedEvent(const MouseCode button) : MouseButtonEvent(button) {}
+		MouseButtonPressedEvent(const InputCode::MouseKey button) : MouseButtonEvent(button) {}
 
 		std::string ToString() const override {
 			std::stringstream ss;
-			ss << "MouseButtonPressedEvent: " << m_Button;
+			ss << "MouseButtonPressedEvent: " << uint32_t(m_Button);
 			return ss.str();
 		}
 
@@ -72,12 +72,12 @@ namespace Easel {
 	class EASEL_EXPORT MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
-		MouseButtonReleasedEvent(const MouseCode button) : MouseButtonEvent(button) {}
+		MouseButtonReleasedEvent(const InputCode::MouseKey button) : MouseButtonEvent(button) {}
 
 		std::string ToString() const override
 		{
 			std::stringstream ss;
-			ss << "MouseButtonReleasedEvent: " << m_Button;
+			ss << "MouseButtonReleasedEvent: " << uint32_t(m_Button);
 			return ss.str();
 		}
 

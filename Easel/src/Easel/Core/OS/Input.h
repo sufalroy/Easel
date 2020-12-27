@@ -22,15 +22,15 @@ namespace Easel {
 		static void Create();
 		static void Release() { delete s_Input; }
 
-		bool GetKeyPressed(KeyCode key)   const { return m_KeyPressed[int(key)]; }
-		bool GetKeyHeld(KeyCode key)      const { return m_KeyHeld[int(key)]; }
-		bool GetMouseClicked(MouseCode key) const { return m_MouseClicked[int(key)]; }
-		bool GetMouseHeld(MouseCode key)    const { return m_MouseHeld[int(key)]; }
+		bool GetKeyPressed(InputCode::Key key)   const { return m_KeyPressed[int(key)]; }
+		bool GetKeyHeld(InputCode::Key key)      const { return m_KeyHeld[int(key)]; }
+		bool GetMouseClicked(InputCode::MouseKey key) const { return m_MouseClicked[int(key)]; }
+		bool GetMouseHeld(InputCode::MouseKey key)    const { return m_MouseHeld[int(key)]; }
 
-		void SetKeyPressed(KeyCode key, bool a) { m_KeyPressed[int(key)] = a; }
-		void SetKeyHeld(KeyCode key, bool a) { m_KeyHeld[int(key)] = a; }
-		void SetMouseClicked(MouseCode key, bool a) { m_MouseClicked[int(key)] = a; }
-		void SetMouseHeld(MouseCode key, bool a) { m_MouseHeld[int(key)] = a; }
+		void SetKeyPressed(InputCode::Key key, bool a) { m_KeyPressed[int(key)] = a; }
+		void SetKeyHeld(InputCode::Key key, bool a) { m_KeyHeld[int(key)] = a; }
+		void SetMouseClicked(InputCode::MouseKey key, bool a) { m_MouseClicked[int(key)] = a; }
+		void SetMouseHeld(InputCode::MouseKey key, bool a) { m_MouseHeld[int(key)] = a; }
 
 		void SetMouseOnScreen(bool onScreen) { m_MouseOnScreen = onScreen; }
 		bool GetMouseOnScreen() const { return m_MouseOnScreen; }

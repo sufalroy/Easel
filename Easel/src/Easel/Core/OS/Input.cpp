@@ -44,26 +44,26 @@ namespace Easel {
 	}
 
 	bool Input::OnKeyPressed(KeyPressedEvent& e) {
-		SetKeyPressed(KeyCode(e.GetKeyCode()), e.GetRepeatCount() < 1);
-		SetKeyHeld(KeyCode(e.GetKeyCode()), true);
+		SetKeyPressed(InputCode::Key(e.GetKeyCode()), e.GetRepeatCount() < 1);
+		SetKeyHeld(InputCode::Key(e.GetKeyCode()), true);
 		return false;
 	}
 
 	bool Input::OnKeyReleased(KeyReleasedEvent& e) {
-		SetKeyPressed(KeyCode(e.GetKeyCode()), false);
-		SetKeyHeld(KeyCode(e.GetKeyCode()), false);
+		SetKeyPressed(InputCode::Key(e.GetKeyCode()), false);
+		SetKeyHeld(InputCode::Key(e.GetKeyCode()), false);
 		return false;
 	}
 
 	bool Input::OnMousePressed(MouseButtonPressedEvent& e) {
-		SetMouseClicked(MouseCode(e.GetMouseButton()), true);
-		SetMouseHeld(MouseCode(e.GetMouseButton()), true);
+		SetMouseClicked(InputCode::MouseKey(e.GetMouseButton()), true);
+		SetMouseHeld(InputCode::MouseKey(e.GetMouseButton()), true);
 		return false;
 	}
 
 	bool Input::OnMouseReleased(MouseButtonReleasedEvent& e) {
-		SetMouseClicked(MouseCode(e.GetMouseButton()), false);
-		SetMouseHeld(MouseCode(e.GetMouseButton()), false);
+		SetMouseClicked(InputCode::MouseKey(e.GetMouseButton()), false);
+		SetMouseHeld(InputCode::MouseKey(e.GetMouseButton()), false);
 		return false;
 	}
 

@@ -9,39 +9,39 @@ namespace Easel {
 
 	class EASEL_EXPORT KeyEvent : public Event {
 	public:
-		_FORCE_INLINE_ KeyCode GetKeyCode() const { return m_KeyCode; }
+		_FORCE_INLINE_ InputCode::Key GetKeyCode() const { return m_KeyCode; }
 
 		EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
 	protected:
-		KeyEvent(const KeyCode keycode) : m_KeyCode(keycode) {}
-		KeyCode m_KeyCode;
+		KeyEvent(const InputCode::Key keycode) : m_KeyCode(keycode) {}
+		InputCode::Key m_KeyCode;
 	};
 
 	class EASEL_EXPORT KeyPressedEvent : public KeyEvent {
 	public:
-		KeyPressedEvent(const KeyCode keycode, uint16_t repeatCount)
+		KeyPressedEvent(const InputCode::Key keycode, int repeatCount)
 			: KeyEvent(keycode), m_RepeatCount(repeatCount) {}
 		
-		_FORCE_INLINE_ uint16_t GetRepeatCount() const { return m_RepeatCount; }
+		_FORCE_INLINE_ int GetRepeatCount() const { return m_RepeatCount; }
 
 		std::string ToString() const override {
 			std::stringstream ss;
-			ss << "KeyPressedEvent: " << m_KeyCode << " (" << m_RepeatCount << "repeats)";
+			ss << "KeyPressedEvent: " << uint32_t(m_KeyCode) << " (" << m_RepeatCount << "repeats)";
 			return ss.str();
 		}
 
 		EVENT_CLASS_TYPE(KeyPressed)
 	private:
-		uint16_t m_RepeatCount;
+		int m_RepeatCount;
 	};
 
 	class EASEL_EXPORT KeyReleasedEvent : public KeyEvent {
 	public:
-		KeyReleasedEvent(const KeyCode keycode) : KeyEvent(keycode) {}
+		KeyReleasedEvent(const InputCode::Key keycode) : KeyEvent(keycode) {}
 		
 		std::string ToString() const override {
 			std::stringstream ss;
-			ss << "KeyReleasedEvent: " << m_KeyCode;
+			ss << "KeyReleasedEvent: " << uint32_t(m_KeyCode);
 			return ss.str();
 		}
 
@@ -50,14 +50,18 @@ namespace Easel {
 
 	class EASEL_EXPORT KeyTypedEvent : public KeyEvent {
 	public:
-		KeyTypedEvent(const KeyCode keycode) : KeyEvent(keycode) {}
+		KeyTypedEvent(const InputCode::Key keycode, char character) 
+			: KeyEvent(keycode), Character(character) {
+
+		}
 
 		std::string ToString() const override {
 			std::stringstream ss;
-			ss << "KeyTypedEvent: " << m_KeyCode;
+			ss << "KeyTypedEvent: " << uint32_t(m_KeyCode);
 			return ss.str();
 		}
 
 		EVENT_CLASS_TYPE(KeyTyped)
+		char Character;
 	};
 }
