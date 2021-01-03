@@ -28,8 +28,8 @@ namespace Easel {
 			float TotalGPUMemory = 0.0f;
 		};
 
-		void ResetStats()
-		{
+		void ResetStats() {
+
 			m_Stats.NumRenderedObjects = 0;
 			m_Stats.NumShadowObjects = 0;
 			m_Stats.FrameTime = 0.0f;

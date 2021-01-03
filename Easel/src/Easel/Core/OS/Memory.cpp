@@ -52,11 +52,11 @@ namespace Easel {
 
 #ifdef CUSTOM_MEMORY_ALLOCATOR
 
-	void* operator new(std::size_t size)
-	{
+	void* operator new(std::size_t size) {
+
 		void* result = Easel::Memory::NewFunc(size, __FILE__, __LINE__);
-		if (result == nullptr)
-		{
+		if (result == nullptr) {
+
 			throw std::bad_alloc();
 		}
 	

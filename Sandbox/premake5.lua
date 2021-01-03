@@ -13,23 +13,26 @@ project "Sandbox"
 		"src/**.cpp"
 	}
 
-	defines
-	{
 
-	}
-
-	includedirs
+	sysincludedirs
 	{
 		"%{wks.location}/Easel/3rdparty/spdlog/include",
 		"%{wks.location}/Easel/src",
 		"%{wks.location}/Easel/3rdparty",
 		"%{IncludeDir.glm}",
+		"%{IncludeDir.cereal}"
 	}
 
 	links
 	{
 		"Easel"
 	}
+
+	defines
+	{
+
+	}
+
 
 	filter "system:windows"
 		systemversion "latest"

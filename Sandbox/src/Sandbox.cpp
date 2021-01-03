@@ -1,17 +1,24 @@
 #include <Easel.h>
+#include <Easel/Core/EntryPoint.h>
 
-class Sandbox : public Easel::Application {
+class Game : public Easel::Application {
 public:
-	explicit Sandbox()
+	explicit Game()
 		: Application(std::string("/Sandbox/"), std::string("Sandbox")) {
+
+		Application::Get().GetWindow()->SetWindowTitle("Sandbox");
+	}
+
+	~Game() {
 
 	}
 
-	~Sandbox() {
+	void Init() override {
 
+		Application::Init();
 	}
 };
 
 Easel::Application* Easel::CreateApplication() {
-	return new Sandbox();
+	return new Game();
 }

@@ -1,22 +1,26 @@
 #pragma once
 
-//App
+//App----------------------------------
 #include "Easel/Core/Base.h"
 #include "Easel/Core/Engine.h"
 #include "Easel/Core/Application.h"
-#include "Easel/Core/EntryPoint.h"
+//--------------------------------------
 
 
-//System
+//System--------------------------------
 #include "Easel/Core/VFS.h"
-#include "Easel/Core/OS/FileSystem.h"
-#include "Easel/Core/CoreSystem.h"
 #include "Easel/Core/Log.h"
+#include "Easel/Core/OS/OS.h"
+#include "Easel/Core/OS/Input.h"
+#include "Easel/Core/CoreSystem.h"
+#include "Easel/Core/OS/FileSystem.h"
+//--------------------------------------
 
 
-//Utilities
+//Utilities----------------------------
 #include "Easel/Utils/TimeStep.h"
+#include "Easel/Utils/LoadImage.h"
 #include "Easel/Utils/StringUtils.h"
+//--------------------------------------
 
 
-//External

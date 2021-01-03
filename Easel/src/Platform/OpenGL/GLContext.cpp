@@ -3,6 +3,7 @@
 
 #include "GL.h"
 
+
 #include <GLFW/glfw3.h>
 
 #ifdef EASEL_PLATFORM_WINDOWS

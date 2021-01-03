@@ -7,7 +7,7 @@
 namespace Easel {
 
 	struct EASEL_EXPORT WindowProperties {
-		WindowProperties(uint32_t width = 1280, uint32_t height = 720, int renderAPI = 0, const std::string& title = "Easel", bool fullscreen = false, bool vSync = true, bool borderless = false, const std::string& filepath = "")
+		WindowProperties(uint32_t width = 1200, uint32_t height = 800, int renderAPI = 0, const std::string& title = "Game", bool fullscreen = false, bool vSync = true, bool borderless = false, const std::string& filepath = "")
 			: Width(width)
 			, Height(height)
 			, Title(title)

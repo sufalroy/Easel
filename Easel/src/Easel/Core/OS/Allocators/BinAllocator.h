@@ -9,11 +9,12 @@
 #define NUM_BINS 128
 #define BIN_SIZE_INC 16
 
-namespace Easel {
-
+namespace Easel
+{
 	class EASEL_HIDDEN BinAllocator : public Allocator {
 	public:
 		BinAllocator() : m_Max(0) {
+
 			for (int i = 0; i < NUM_BINS; i++)
 				m_Bins[i] = nullptr;
 		}
@@ -23,11 +24,16 @@ namespace Easel {
 		void* Malloc(size_t size, const char* file, int line) override;
 		void Free(void* location) override;
 
-		void* operator new (size_t size) { return ::malloc(MEMORY_SIZE); }
+		void* operator new (size_t size) {
+
+			return ::malloc(MEMORY_SIZE);
+		}
+
 	private:
+
 		BinAllocator(const BinAllocator& other) {};
 
-		BinAllocator operator = (const BinAllocator& other)
+		BinAllocator operator =(const BinAllocator& other)
 		{
 			return *this;
 		}
@@ -42,4 +48,6 @@ namespace Easel {
 		int m_Max;
 		void* m_Bins[NUM_BINS];
 	};
+
 }
+

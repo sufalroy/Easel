@@ -32,6 +32,7 @@ IncludeDir["Glad"]  =  "%{wks.location}/Easel/3rdparty/glad/include"
 IncludeDir["ImGui"] =  "%{wks.location}/Easel/3rdparty/imgui"
 IncludeDir["stb"]   =  "%{wks.location}/Easel/3rdparty/stb"
 IncludeDir["glm"]   =  "%{wks.location}/Easel/3rdparty/glm"
+IncludeDir["cereal"]=  "%{wks.location}/Easel/3rdparty/cereal/include"
 
 group "Dependencies"
 	include "vendor/premake"

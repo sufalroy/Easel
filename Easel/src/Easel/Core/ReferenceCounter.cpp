@@ -33,22 +33,22 @@ namespace Easel {
 
 	_FORCE_INLINE_ uint32_t _atomic_decrement_impl(volatile uint32_t* pw) {
 
-		return InterlockedDecrement((LONG volatile *)pw);
+		return InterlockedDecrement((LONG volatile*)pw);
 	}
 
 	_FORCE_INLINE_ uint32_t _atomic_increment_impl(volatile uint32_t* pw) {
 
-		return InterlockedIncrement((LONG volatile *)pw);
+		return InterlockedIncrement((LONG volatile*)pw);
 	}
 
 	_FORCE_INLINE_ uint32_t _atomic_sub_impl(volatile uint32_t* pw, volatile uint32_t val) {
 
-		return InterlockedExchangeAdd((LONG volatile *)pw, -(int32_t)val) - val;
+		return InterlockedExchangeAdd((LONG volatile*)pw, -(int32_t)val) - val;
 	}
 
 	_FORCE_INLINE_ uint32_t _atomic_add_impl(volatile uint32_t* pw, volatile uint32_t val) {
 
-		return InterlockedAdd((LONG volatile *)pw, val);
+		return InterlockedAdd((LONG volatile*)pw, val);
 	}
 
 	_FORCE_INLINE_ uint32_t _atomic_exchange_if_greater_impl(volatile uint32_t* pw, volatile uint32_t val) {
@@ -63,12 +63,12 @@ namespace Easel {
 
 	_FORCE_INLINE_ uint64_t _atomic_decrement_impl(volatile uint64_t* pw) {
 
-		return InterlockedDecrement64((LONGLONG volatile *)pw);
+		return InterlockedDecrement64((LONGLONG volatile*)pw);
 	}
 
 	_FORCE_INLINE_ uint64_t _atomic_increment_impl(volatile uint64_t* pw) {
 
-		return InterlockedIncrement64((LONGLONG volatile *)pw);
+		return InterlockedIncrement64((LONGLONG volatile*)pw);
 	}
 
 	_FORCE_INLINE_ uint64_t _atomic_sub_impl(volatile uint64_t* pw, volatile uint64_t val) {
@@ -85,7 +85,6 @@ namespace Easel {
 
 		ATOMIC_EXCHANGE_IF_GREATER_BODY(pw, val, LONGLONG, InterlockedCompareExchange64, uint64_t)
 	}
-
 
 	uint32_t atomic_conditional_increment(volatile uint32_t* pw) {
 		return _atomic_conditional_increment_impl(pw);
@@ -116,7 +115,7 @@ namespace Easel {
 	}
 
 	uint64_t atomic_decrement(volatile uint64_t* pw) {
-		return _atomic_decrement_impl(pw);;
+		return _atomic_decrement_impl(pw);
 	}
 
 	uint64_t atomic_increment(volatile uint64_t* pw) {

@@ -2,7 +2,7 @@
 #include "Easel/Core/OS/Allocators/DefaultAllocator.h"
 
 #include "Easel/Core/OS/MemoryManager.h"
-//#define TRACK_ALLOCATIONS
+#define TRACK_ALLOCATIONS
 
 #define EASEL_MEMORY_ALIGNMENT 16
 #define EASEL_ALLOC(size)	_aligned_malloc(size, EASEL_MEMORY_ALIGNMENT)

@@ -25,7 +25,9 @@ namespace Easel {
 
 		MemoryStats()
 			: totalAllocated(0), totalFreed(0), 
-			currentUsed(0), totalAllocations(0) {}
+			currentUsed(0), totalAllocations(0) {
+
+		}
 
 	};
 

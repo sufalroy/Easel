@@ -116,7 +116,7 @@ namespace Easel {
 	uint32_t atomic_sub(volatile uint32_t* pw, volatile uint32_t val);
 	uint32_t atomic_add(volatile uint32_t* pw, volatile uint32_t val);
 	uint32_t atomic_exchange_if_greater(volatile uint32_t* pw, volatile uint32_t val);
-
+	
 	uint64_t atomic_conditional_increment(volatile uint64_t* pw);
 	uint64_t atomic_decrement(volatile uint64_t* pw);
 	uint64_t atomic_increment(volatile uint64_t* pw);

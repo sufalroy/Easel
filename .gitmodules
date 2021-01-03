@@ -13,3 +13,6 @@
 [submodule "Easel/3rdparty/imgui"]
 	path = Easel/3rdparty/imgui
 	url = https://github.com/sufalroy/imgui.git
+[submodule "Easel/3rdparty/cereal"]
+	path = Easel/3rdparty/cereal
+	url = https://github.com/USCiLab/cereal.git

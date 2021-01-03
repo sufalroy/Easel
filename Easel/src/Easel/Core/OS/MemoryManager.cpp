@@ -20,7 +20,9 @@ namespace Easel {
 
 	MemoryManager* MemoryManager::Get() {
 		if (s_Instance == nullptr) {
-			s_Instance = new MemoryManager();
+
+			s_Instance = (MemoryManager*)malloc(sizeof(MemoryManager));
+			s_Instance = new(s_Instance) MemoryManager();
 		}
 
 		return s_Instance;
@@ -34,11 +36,11 @@ namespace Easel {
 
 		std::stringstream result;
 		if (bytes > gb)
-			result << std::fixed << std::setprecision(2) << (float)bytes / gb << " gb";
+			result << std::fixed << std::setprecision(2) << (float)bytes / gb << " GB";
 		else if (bytes > mb)
-			result << std::fixed << std::setprecision(2) << (float)bytes / mb << " mb";
+			result << std::fixed << std::setprecision(2) << (float)bytes / mb << " MB";
 		else if (bytes > kb)
-			result << std::fixed << std::setprecision(2) << (float)bytes / kb << " kb";
+			result << std::fixed << std::setprecision(2) << (float)bytes / kb << " KB";
 		else
 			result << std::fixed << std::setprecision(2) << (float)bytes << " bytes";
 		

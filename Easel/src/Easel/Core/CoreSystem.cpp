@@ -1,7 +1,8 @@
 #include "Precompiled.h"
-#include "Easel/Core/CoreSystem.h"
 #include "Easel/Core/VFS.h"
 #include "Easel/Core/JobSystem.h"
+#include "Easel/Core/CoreSystem.h"
+#include "Easel/Core/Version.h"
 #include "Easel/Core/OS/MemoryManager.h"
 
 namespace Easel {
@@ -9,12 +10,13 @@ namespace Easel {
 	namespace Internal {
 
 		void CoreSystem::Init(bool enableProfiler) {
+
 			Debug::Log::OnInit();
 
-			EASEL_CORE_INFO("Easel Engine");
+			EASEL_CORE_INFO("Easel Engine - Version {0}.{1}.{2}", EaselVersion.major, EaselVersion.minor, EaselVersion.patch);
 
 			System::JobSystem::OnInit();
-			EASEL_CORE_INFO("Initializing System");
+			EASEL_CORE_INFO("Initializing System...");
 			VFS::OnInit();
 		}
 

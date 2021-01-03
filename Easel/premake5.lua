@@ -19,22 +19,20 @@ project "Easel"
 		"3rdparty/glm/glm/**.inl",
 	}
 
-	defines
-	{
-		"EASEL_ENGINE",
-		"EASEL_DYNAMIC",
-		"EASEL_ROOT_DIR=" .. root_dir,
-	}
-
 	includedirs
 	{
-		"src/",
+		"src/"
+	}
+
+	sysincludedirs
+	{
 		"3rdparty/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.stb}",
 		"%{IncludeDir.glm}",
+		"%{IncludeDir.cereal}"
 	}
 
 	links
@@ -43,6 +41,13 @@ project "Easel"
 		"Glad",
 		"ImGui",
 		"opengl32.lib"
+	}
+
+	defines
+	{
+		"EASEL_ENGINE",
+		"EASEL_DYNAMIC",
+		"EASEL_ROOT_DIR=" .. root_dir,
 	}
 
 
