@@ -27,12 +27,14 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
+
 IncludeDir["GLFW"]  =  "%{wks.location}/Easel/3rdparty/glfw/include"
 IncludeDir["Glad"]  =  "%{wks.location}/Easel/3rdparty/glad/include"
 IncludeDir["ImGui"] =  "%{wks.location}/Easel/3rdparty/imgui"
 IncludeDir["stb"]   =  "%{wks.location}/Easel/3rdparty/stb"
 IncludeDir["glm"]   =  "%{wks.location}/Easel/3rdparty/glm"
 IncludeDir["cereal"]=  "%{wks.location}/Easel/3rdparty/cereal/include"
+IncludeDir["tracy"] =  "%{wks.location}/Easel/3rdparty/tracy"
 
 group "Dependencies"
 	include "vendor/premake"

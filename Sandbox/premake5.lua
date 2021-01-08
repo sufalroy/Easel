@@ -30,7 +30,8 @@ project "Sandbox"
 
 	defines
 	{
-
+		"EASEL_PROFILE",
+		"TRACY_ENABLE"
 	}
 
 

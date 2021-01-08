@@ -4,6 +4,7 @@
 #include "Easel/Core/OS/Allocators/DefaultAllocator.h"
 #include "Easel/Core/OS/Allocators/StbAllocator.h"
 
+
 namespace Easel {
 
 	Allocator* const Memory::MemoryAllocator = new DefaultAllocator();
@@ -59,7 +60,8 @@ namespace Easel {
 
 			throw std::bad_alloc();
 		}
-	
+
+		TracyAlloc(result, size);
 		return result;
 	}
 	
@@ -71,16 +73,19 @@ namespace Easel {
 			throw std::bad_alloc();
 		}
 
+		TracyAlloc(result, size);
 		return result;
 	}
 	
 	void operator delete(void* p) throw()
 	{
+		TracyFree(p);
 		Easel::Memory::DeleteFunc(p);
 	}
 	
 	void operator delete[](void* p) throw()
 	{
+		TracyFree(p);
 		Easel::Memory::DeleteFunc(p);
 	}
 #endif

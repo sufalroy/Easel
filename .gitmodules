@@ -16,3 +16,6 @@
 [submodule "Easel/3rdparty/cereal"]
 	path = Easel/3rdparty/cereal
 	url = https://github.com/USCiLab/cereal.git
+[submodule "Easel/3rdparty/tracy"]
+	path = Easel/3rdparty/tracy
+	url = https://github.com/sufalroy/tracy.git

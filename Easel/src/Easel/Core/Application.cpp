@@ -22,7 +22,7 @@ namespace Easel {
 	Application* Application::s_Instance = nullptr;
 
 	Application::Application(const std::string& projectRoot, const std::string& projectName) {
-
+		EASEL_PROFILE_FUNCTION();
 		EASEL_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 
@@ -56,11 +56,11 @@ namespace Easel {
 	}
 
 	Application::~Application() {
-
+		EASEL_PROFILE_FUNCTION();
 	}
 
 	void Application::Init() {
-
+		EASEL_PROFILE_FUNCTION();
 		if (!m_Window->HasInitialised())
 			Quit(true, "Window failed to initialise!");
 
@@ -70,6 +70,7 @@ namespace Easel {
 	}
 
 	int Application::Quit(bool pause, const std::string& reason) {
+		EASEL_PROFILE_FUNCTION();
 		Serialise(FilePath);
 		Engine::Release();
 		Input::Release();
@@ -89,20 +90,21 @@ namespace Easel {
 	}
 
 	bool Application::OnFrame() {
-
+		EASEL_PROFILE_FUNCTION();
 		return false;
 	}
 
 	void Application::OnRender() {
-
+		EASEL_PROFILE_FUNCTION();
 	}
 
 	void Application::OnUpdate(const Timestep& dt) {
-
+		EASEL_PROFILE_FUNCTION();
 	}
 	
 
 	void Application::OnEvent(Event& e) {
+		EASEL_PROFILE_FUNCTION();
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(Application::OnWindowClose));
 		dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FN(Application::OnWindowResize));
@@ -120,7 +122,7 @@ namespace Easel {
 
 
 	bool Application::OnWindowResize(WindowResizeEvent& e) {
-
+		EASEL_PROFILE_FUNCTION();
 		return false;
 	}
 
@@ -130,11 +132,12 @@ namespace Easel {
 	}
 	
 	void Application::OnImGui() {
-
+		EASEL_PROFILE_FUNCTION();
 	}
 
 	void Application::Serialise(const std::string& filePath)
 	{
+		EASEL_PROFILE_FUNCTION();
 		{
 			std::stringstream storage;
 			{
@@ -149,6 +152,7 @@ namespace Easel {
 
 	void Application::Deserialise(const std::string& filePath)
 	{
+		EASEL_PROFILE_FUNCTION();
 		{
 			auto fullPath = ROOT_DIR + filePath;
 			if (!FileSystem::FileExists(fullPath))

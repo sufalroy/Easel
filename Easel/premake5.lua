@@ -17,6 +17,7 @@ project "Easel"
 		"src/**.cpp",
 		"3rdparty/glm/glm/**.hpp",
 		"3rdparty/glm/glm/**.inl",
+		"3rdparty/tracy/TracyClient.cpp",
 	}
 
 	includedirs
@@ -32,7 +33,8 @@ project "Easel"
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.stb}",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.cereal}"
+		"%{IncludeDir.cereal}",
+		"%{IncludeDir.tracy}",
 	}
 
 	links
@@ -48,6 +50,8 @@ project "Easel"
 		"EASEL_ENGINE",
 		"EASEL_DYNAMIC",
 		"EASEL_ROOT_DIR=" .. root_dir,
+		"EASEL_PROFILE",
+		"TRACY_ENABLE"
 	}
 
 
