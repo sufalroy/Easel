@@ -13,7 +13,7 @@
 #define NOGDI
 #endif // EASEL_PLATFORM_WINDOWS
 
-#include <imgui.h>
+#include <imgui/imgui.h>
 
 #ifdef GL_DEBUG_CALLBACK
 

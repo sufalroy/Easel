@@ -68,6 +68,7 @@ project "Easel"
 			"_DISABLE_EXTENDED_ALIGNED_STORAGE",
 			"_SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING",
 			"_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING",
+			"EASEL_IMGUI"
 		}
 
 		buildoptions
@@ -87,7 +88,7 @@ project "Easel"
 	filter "configurations:Debug" 
 		defines {"EASEL_DEBUG", "_DEBUG"}
 		runtime "Debug"
-		symbols "on"
+		symbols "off"
 
 	filter "configurations:Release"
 		defines "EASEL_RELEASE"

@@ -232,7 +232,7 @@ namespace Easel {
 
 			return string;
 		}
-		/*
+		
 		std::string Demangle(const std::string& string) {
 
 			if (string.empty()) return {};
@@ -255,7 +255,7 @@ namespace Easel {
 			return ret;
 
 #endif // defined(_WIN32)
-		}*/
+		}
 	}
 }
 

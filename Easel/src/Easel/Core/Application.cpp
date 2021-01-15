@@ -15,7 +15,7 @@
 #include "Easel/Events/ApplicationEvent.h"
 
 #include <cereal/archives/json.hpp>
-#include <imgui.h>
+#include <imgui/imgui.h>
 
 namespace Easel {
 
