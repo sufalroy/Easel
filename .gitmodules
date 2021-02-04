@@ -19,3 +19,6 @@
 [submodule "Easel/3rdparty/tracy"]
 	path = Easel/3rdparty/tracy
 	url = https://github.com/sufalroy/tracy.git
+[submodule "Easel/3rdparty/SPIRV-Cross"]
+	path = Easel/3rdparty/SPIRV-Cross
+	url = https://github.com/sufalroy/SPIRV-Cross.git

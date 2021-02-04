@@ -35,6 +35,7 @@ project "Easel"
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.cereal}",
 		"%{IncludeDir.tracy}",
+		"%{IncludeDir.SpirvCross}"
 	}
 
 	links
@@ -42,7 +43,8 @@ project "Easel"
 		"GLFW",
 		"Glad",
 		"ImGui",
-		"opengl32.lib"
+		"opengl32.lib",
+		"SpirvCross"
 	}
 
 	defines
