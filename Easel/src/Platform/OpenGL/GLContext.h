@@ -14,7 +14,7 @@ namespace Easel {
 			void Present() override;
 			void Init() override {};
 
-			_FORCE_INLINE_ static GLContext* Get() { return static_cast<GLContext*>(s_Context); }
+			inline static GLContext* Get() { return static_cast<GLContext*>(s_Context); }
 
 			size_t GetMinUniformBufferOffsetAlignment() const override { return 256; }
 

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "GLRenderer.h"
 #include "GL.h"
 
 namespace Easel {

@@ -3,8 +3,9 @@
 
 #include "GL.h"
 #include "GLDebug.h"
-
+#ifndef EASEL_PLATFORM_MOBILE
 #include <GLFW/glfw3.h>
+#endif // !EASEL_PLATFORM_MOBILE
 
 #ifdef EASEL_PLATFORM_WINDOWS
 #undef NOGDI
@@ -16,7 +17,6 @@
 #include <imgui/imgui.h>
 
 #ifdef GL_DEBUG_CALLBACK
-
 static std::string GetStringForType(GLenum type) {
 
 	switch (type) {
