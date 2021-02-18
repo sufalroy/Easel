@@ -23,8 +23,7 @@ namespace Easel {
 		s_Instance = nullptr;
 	}
 
-	std::string OS::PowerStateToString(PowerState state)
-	{
+	std::string OS::PowerStateToString(PowerState state) {
 		switch (state) {
 
 		case POWERSTATE_UNKNOWN:

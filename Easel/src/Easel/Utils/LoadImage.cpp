@@ -9,6 +9,7 @@
 namespace Easel {
 
 	uint8_t* LoadImageFromFile(const char* filename, uint32_t* width, uint32_t* height, uint32_t* bits, bool* isHDR, bool flipY, bool srgb) {
+		EASEL_PROFILE_FUNCTION();
 		std::string filePath = std::string(filename);
 		std::string physicalPath;
 		if (!VFS::Get()->ResolvePhysicalPath(filePath, physicalPath))

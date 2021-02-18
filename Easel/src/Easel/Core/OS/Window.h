@@ -7,7 +7,7 @@
 namespace Easel {
 
 	struct EASEL_EXPORT WindowProperties {
-		WindowProperties(uint32_t width = 1200, uint32_t height = 800, int renderAPI = 0, const std::string& title = "Game", bool fullscreen = false, bool vSync = true, bool borderless = false, const std::string& filepath = "")
+		WindowProperties(uint32_t width = 1280, uint32_t height = 720, int renderAPI = 0, const std::string& title = "Game", bool fullscreen = false, bool vSync = true, bool borderless = false, const std::string& filepath = "")
 			: Width(width)
 			, Height(height)
 			, Title(title)
@@ -44,10 +44,10 @@ namespace Easel {
 		virtual void SetExit(bool exit) = 0;
 		virtual bool GetExit() const = 0;
 		
-		_FORCE_INLINE_ void SetHasResized(bool resized) {
+		inline void SetHasResized(bool resized) {
 			m_HasResized = resized;
 		}
-		_FORCE_INLINE_ bool GetHasResized() const {
+		inline bool GetHasResized() const {
 			return m_HasResized;
 		}
 

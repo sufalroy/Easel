@@ -1,7 +1,6 @@
 #pragma once
 #include <cstdint>
 
-
 namespace Easel {
 
 	namespace Graphics {

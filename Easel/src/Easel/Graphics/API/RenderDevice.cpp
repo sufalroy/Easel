@@ -16,10 +16,9 @@ namespace Easel {
 		}
 
 		void RenderDevice::Release() {
-			
-			delete s_Instance;
-		}
 
+			delete s_Instance;
+		};
 	}
 }
 

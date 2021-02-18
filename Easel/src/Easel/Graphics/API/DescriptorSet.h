@@ -77,7 +77,6 @@ namespace Easel {
 			std::string name = "";
 			DescriptorType type;
 			ShaderType shaderType;
-			bool systemUniforms = false;
 		};
 
 		enum class PushConstantDataType {

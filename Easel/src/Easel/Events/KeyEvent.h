@@ -9,7 +9,7 @@ namespace Easel {
 
 	class EASEL_EXPORT KeyEvent : public Event {
 	public:
-		_FORCE_INLINE_ InputCode::Key GetKeyCode() const { return m_KeyCode; }
+		inline InputCode::Key GetKeyCode() const { return m_KeyCode; }
 
 		EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
 	protected:
@@ -22,7 +22,7 @@ namespace Easel {
 		KeyPressedEvent(const InputCode::Key keycode, int repeatCount)
 			: KeyEvent(keycode), m_RepeatCount(repeatCount) {}
 		
-		_FORCE_INLINE_ int GetRepeatCount() const { return m_RepeatCount; }
+		inline int GetRepeatCount() const { return m_RepeatCount; }
 
 		std::string ToString() const override {
 			std::stringstream ss;

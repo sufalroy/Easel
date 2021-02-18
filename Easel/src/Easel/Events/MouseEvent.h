@@ -11,8 +11,8 @@ namespace Easel {
 	public:
 		MouseMovedEvent(const float x, const float y) : m_MouseX(x), m_MouseY(y) {}
 
-		_FORCE_INLINE_ float GetX() const { return m_MouseX; }
-		_FORCE_INLINE_ float GetY() const { return m_MouseY; }
+		inline float GetX() const { return m_MouseX; }
+		inline float GetY() const { return m_MouseY; }
 
 		std::string ToString() const override {
 			std::stringstream ss;
@@ -31,8 +31,8 @@ namespace Easel {
 		MouseScrolledEvent(const float xOffset, const float yOffset)
 			: m_XOffset(xOffset), m_YOffset(yOffset) {}
 
-		_FORCE_INLINE_ float GetXOffset() const { return m_XOffset; }
-		_FORCE_INLINE_ float GetYOffset() const { return m_YOffset; }
+		inline float GetXOffset() const { return m_XOffset; }
+		inline float GetYOffset() const { return m_YOffset; }
 
 		std::string ToString() const override {
 			std::stringstream ss;
@@ -48,7 +48,7 @@ namespace Easel {
 
 	class EASEL_EXPORT MouseButtonEvent : public Event {
 	public:
-		_FORCE_INLINE_ InputCode::MouseKey GetMouseButton() const { return m_Button; }
+		inline InputCode::MouseKey GetMouseButton() const { return m_Button; }
 
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput | EventCategoryMouseButton)
 	protected:
@@ -88,7 +88,7 @@ namespace Easel {
 	public:
 		MouseEnterEvent(const bool enter) : m_Entered(enter) {}
 
-		_FORCE_INLINE_ bool GetEntered() const { return m_Entered; }
+		inline bool GetEntered() const { return m_Entered; }
 
 		std::string ToString() const override {
 			std::stringstream ss;

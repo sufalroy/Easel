@@ -6,15 +6,14 @@
 
 #include <memory>
 
-namespace Easel
-{
-	class EASEL_EXPORT RefCount
-	{
+namespace Easel {
+
+	class EASEL_EXPORT RefCount {
 	public:
 		RefCount();
 		~RefCount();
 
-		_FORCE_INLINE_ bool IsReferenced() const {
+		inline bool IsReferenced() const {
 
 			return m_RefcountInit.get() < 1;
 		}
@@ -77,7 +76,7 @@ namespace Easel
 		}
 
 		template<typename U>
-		_FORCE_INLINE_ Reference(const Reference<U>& moving) noexcept {
+		inline Reference(const Reference<U>& moving) noexcept {
 
 			U* movingPtr = moving.get();
 
@@ -109,17 +108,17 @@ namespace Easel
 		}
 
 		// Access to smart pointer state
-		_FORCE_INLINE_ T* get() const {
+		inline T* get() const {
 
 			return m_Ptr;
 		}
 
-		_FORCE_INLINE_ RefCount* GetCounter() const {
+		inline RefCount* GetCounter() const {
 
 			return m_Counter;
 		}
 
-		_FORCE_INLINE_ T* release() noexcept {
+		inline T* release() noexcept {
 
 			T* tmp = nullptr;
 
@@ -135,7 +134,7 @@ namespace Easel
 			return tmp;
 		}
 
-		_FORCE_INLINE_ void reset(T* p_ptr = nullptr) {
+		inline void reset(T* p_ptr = nullptr) {
 
 			unref();
 
@@ -149,25 +148,25 @@ namespace Easel
 			}
 		}
 
-		_FORCE_INLINE_ void operator=(Reference const& rhs) {
+		inline void operator=(Reference const& rhs) {
 
 			ref(rhs);
 		}
 
-		_FORCE_INLINE_ Reference& operator=(Reference&& rhs) noexcept {
+		inline Reference& operator=(Reference&& rhs) noexcept {
 
 			ref(rhs);
 			return *this;
 		}
 
-		_FORCE_INLINE_ Reference& operator=(T* newData) {
+		inline Reference& operator=(T* newData) {
 
 			reset(newData);
 			return *this;
 		}
 
 		template<typename U>
-		_FORCE_INLINE_ Reference& operator=(const Reference<U>& moving) {
+		inline Reference& operator=(const Reference<U>& moving) {
 
 			U* movingPtr = moving.get();
 
@@ -192,74 +191,73 @@ namespace Easel
 			return *this;
 		}
 
-		_FORCE_INLINE_ Reference& operator=(std::nullptr_t) {
+		inline Reference& operator=(std::nullptr_t) {
 
 			reset();
 			return *this;
 		}
 
 		// Const correct access owned object
-		_FORCE_INLINE_ T* operator->() const {
+		inline T* operator->() const {
 
 			return &*m_Ptr;
 		}
 
-		_FORCE_INLINE_ T& operator*() const {
+		inline T& operator*() const {
 
 			return *m_Ptr;
 		}
 
-		_FORCE_INLINE_ T& operator[](int index) {
+		inline T& operator[](int index) {
 
 			assert(m_Ptr);
 			return m_Ptr[index];
 		}
 
-		_FORCE_INLINE_ explicit constexpr operator bool() const {
+		inline explicit constexpr operator bool() const {
 
 			return m_Ptr != nullptr;
 		}
 
-		_FORCE_INLINE_ constexpr bool operator==(const T* p_ptr) const {
+		inline constexpr bool operator==(const T* p_ptr) const {
 
 			return m_Ptr == p_ptr;
 		}
 
-		_FORCE_INLINE_ constexpr bool operator!=(const T* p_ptr) const {
+		inline constexpr bool operator!=(const T* p_ptr) const {
 
 			return m_Ptr != p_ptr;
 		}
 
-		_FORCE_INLINE_ constexpr bool operator<(const Reference<T>& p_r) const {
+		inline constexpr bool operator<(const Reference<T>& p_r) const {
 
 			return m_Ptr < p_r.m_Ptr;
 		}
 
-		_FORCE_INLINE_ constexpr bool operator==(const Reference<T>& p_r) const {
+		inline constexpr bool operator==(const Reference<T>& p_r) const {
 
 			return m_Ptr == p_r.m_Ptr;
 		}
 
-		_FORCE_INLINE_ constexpr bool operator!=(const Reference<T>& p_r) const {
+		inline constexpr bool operator!=(const Reference<T>& p_r) const {
 
 			return m_Ptr != p_r.m_Ptr;
 		}
 
-		_FORCE_INLINE_ void swap(Reference& other) noexcept {
+		inline void swap(Reference& other) noexcept {
 
 			std::swap(m_Ptr, other.m_Ptr);
 			std::swap(m_Counter, other.m_Counter);
 		}
 
 		template<typename U>
-		_FORCE_INLINE_ Reference<U> As() const {
+		inline Reference<U> As() const {
 
 			return Reference<U>(*this);
 		}
 
-
 	private:
-		_FORCE_INLINE_ void ref(const Reference& p_from) {
+		inline void ref(const Reference& p_from) {
 
 			if (p_from.m_Ptr == m_Ptr)
 				return;
@@ -277,7 +275,7 @@ namespace Easel
 			}
 		}
 
-		_FORCE_INLINE_ void refPointer(T* ptr) {
+		inline void refPointer(T* ptr) {
 
 			EASEL_ASSERT(ptr, "Creating shared ptr with nullptr");
 
@@ -286,7 +284,7 @@ namespace Easel
 			m_Counter->InitRef();
 		}
 
-		_FORCE_INLINE_ void unref() {
+		inline void unref() {
 
 			if (m_Counter != nullptr) {
 
@@ -382,47 +380,47 @@ namespace Easel
 				return Reference<T>(m_Ptr);
 		}
 
-		_FORCE_INLINE_ T* operator->() const {
+		inline T* operator->() const {
 
 			return &*m_Ptr;
 		}
 
-		_FORCE_INLINE_ T& operator*() const {
+		inline T& operator*() const {
 
 			return *m_Ptr;
 		}
 
-		_FORCE_INLINE_ T& operator[](int index) {
+		inline T& operator[](int index) {
 			assert(m_Ptr);
 			return m_Ptr[index];
 		}
 
-		_FORCE_INLINE_ explicit operator bool() const {
+		inline explicit operator bool() const {
 
 			return m_Ptr != nullptr;
 		}
 
-		_FORCE_INLINE_ bool operator==(const T* p_ptr) const {
+		inline bool operator==(const T* p_ptr) const {
 
 			return m_Ptr == p_ptr;
 		}
 
-		_FORCE_INLINE_ bool operator!=(const T* p_ptr) const {
+		inline bool operator!=(const T* p_ptr) const {
 
 			return m_Ptr != p_ptr;
 		}
 
-		_FORCE_INLINE_ bool operator<(const WeakReference<T>& p_r) const {
+		inline bool operator<(const WeakReference<T>& p_r) const {
 
 			return m_Ptr < p_r.m_Ptr;
 		}
 
-		_FORCE_INLINE_ bool operator==(const WeakReference<T>& p_r) const {
+		inline bool operator==(const WeakReference<T>& p_r) const {
 
 			return m_Ptr == p_r.m_Ptr;
 		}
 
-		_FORCE_INLINE_ bool operator!=(const WeakReference<T>& p_r) const
+		inline bool operator!=(const WeakReference<T>& p_r) const
 		{
 			return m_Ptr != p_r.m_Ptr;
 		}
@@ -460,33 +458,33 @@ namespace Easel
 		Owned(Owned const&) = delete;
 		Owned& operator=(Owned const&) = delete;
 
-		_FORCE_INLINE_ Owned(Owned&& moving) noexcept {
+		inline Owned(Owned&& moving) noexcept {
 
 			moving.swap(*this);
 		}
 
-		_FORCE_INLINE_ Owned& operator=(Owned&& moving) noexcept {
+		inline Owned& operator=(Owned&& moving) noexcept {
 
 			moving.swap(*this);
 			return *this;
 		}
 
 		template<typename U>
-		_FORCE_INLINE_ Owned(Owned<U>&& moving) {
+		inline Owned(Owned<U>&& moving) {
 
 			Owned<T> tmp(moving.release());
 			tmp.swap(*this);
 		}
 
 		template<typename U>
-		_FORCE_INLINE_ Owned& operator=(Owned<U>&& moving) {
+		inline Owned& operator=(Owned<U>&& moving) {
 
 			Owned<T> tmp(moving.release());
 			tmp.swap(*this);
 			return *this;
 		}
 
-		_FORCE_INLINE_ Owned& operator=(std::nullptr_t) {
+		inline Owned& operator=(std::nullptr_t) {
 
 			reset();
 			return *this;
@@ -515,20 +513,20 @@ namespace Easel
 		}
 
 		// Modify object state
-		_FORCE_INLINE_ T* release() {
+		inline T* release() {
 
 			T* result = nullptr;
 			std::swap(result, m_Ptr);
 			return result;
 		}
 
-		_FORCE_INLINE_ void reset() {
+		inline void reset() {
 
 			T* tmp = release();
 			delete tmp;
 		}
 
-		_FORCE_INLINE_ void swap(Owned& src) noexcept {
+		inline void swap(Owned& src) noexcept {
 			std::swap(m_Ptr, src.m_Ptr);
 		}
 

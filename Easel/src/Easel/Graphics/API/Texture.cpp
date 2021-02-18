@@ -1,6 +1,8 @@
 #include "Precompiled.h"
 #include "Easel/Graphics/API/Texture.h"
 
+#include "Easel/Utils/LoadImage.h"
+
 namespace Easel {
 
 	namespace Graphics {

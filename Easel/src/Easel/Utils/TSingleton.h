@@ -4,8 +4,8 @@
 
 #include <mutex>
 
-namespace Easel
-{
+namespace Easel {
+
 	template <class T>
 	class TSingleton {
 	public:
@@ -56,10 +56,9 @@ namespace Easel
 		}
 
 		//Provide global access to release/delete this class
-		static void Release()
-		{
-			if (m_pInstance)
-			{
+		static void Release() {
+			if (m_pInstance) {
+
 				delete m_pInstance;
 				m_pInstance = nullptr;
 			}
@@ -81,12 +80,10 @@ namespace Easel
 
 
 	template <class T>
-	class ThreadSafeSingleton
-	{
+	class ThreadSafeSingleton {
 	public:
 		//Provide global access to the only instance of this class
-		static T& Get()
-		{
+		static T& Get() {
 			if (!m_pInstance)	//This if statement prevents the costly Lock-step being required each time the instance is requested
 			{
 				std::lock_guard<std::mutex> lock(m_mConstructed);		//Lock is required here though, to prevent multiple threads initialising multiple instances of the class when it turns out it has not been initialised yet
@@ -97,8 +94,7 @@ namespace Easel
 		}
 
 		//Provide global access to release/delete this class
-		static void Release()
-		{
+		static void Release() {
 			//Technically this could have another enclosing if statement, but speed is much less of a problem as this should only be called once in the entire program.
 			std::lock_guard<std::mutex> lock(m_mConstructed);
 			if (m_pInstance) {

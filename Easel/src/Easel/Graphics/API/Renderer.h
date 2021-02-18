@@ -90,36 +90,36 @@ namespace Easel {
 			virtual void InitInternal() = 0;
 			virtual void Begin() = 0;
 			virtual void OnResize(uint32_t width, uint32_t height) = 0;
-			_FORCE_INLINE_ static Renderer* GetRenderer() { return s_Instance; }
+			inline static Renderer* GetRenderer() { return s_Instance; }
 
 			virtual void PresentInternal() = 0;
-			virtual void PresentInternal(Graphics::CommandBuffer* cmdBuffer) = 0;
-			virtual void BindDescriptorSetsInternal(Graphics::Pipeline* pipeline, Graphics::CommandBuffer* cmdBuffer, uint32_t dynamicOffset, std::vector<Graphics::DescriptorSet*>& descriptorSets) = 0;
+			virtual void PresentInternal(CommandBuffer* cmdBuffer) = 0;
+			virtual void BindDescriptorSetsInternal(Pipeline* pipeline, CommandBuffer* cmdBuffer, uint32_t dynamicOffset, std::vector<DescriptorSet*>& descriptorSets) = 0;
 
 			virtual const std::string& GetTitleInternal() const = 0;
 			virtual void DrawIndexedInternal(CommandBuffer* commandBuffer, DrawType type, uint32_t count, uint32_t start) const = 0;
 			virtual void DrawInternal(CommandBuffer* commandBuffer, DrawType type, uint32_t count, DataType dataType, void* indices) const = 0;
-			virtual Graphics::Swapchain* GetSwapchainInternal() const = 0;
+			virtual Swapchain* GetSwapchainInternal() const = 0;
 
-			_FORCE_INLINE_ static void Present() {
+			inline static void Present() {
 				s_Instance->PresentInternal();
 			}
-			_FORCE_INLINE_ static void Present(Graphics::CommandBuffer* cmdBuffer) {
+			inline static void Present(Graphics::CommandBuffer* cmdBuffer) {
 				s_Instance->PresentInternal(cmdBuffer);
 			}
-			_FORCE_INLINE_ static void BindDescriptorSets(Graphics::Pipeline* pipeline, Graphics::CommandBuffer* cmdBuffer, uint32_t dynamicOffset, std::vector<Graphics::DescriptorSet*>& descriptorSets) {
+			inline static void BindDescriptorSets(Graphics::Pipeline* pipeline, Graphics::CommandBuffer* cmdBuffer, uint32_t dynamicOffset, std::vector<Graphics::DescriptorSet*>& descriptorSets) {
 				s_Instance->BindDescriptorSetsInternal(pipeline, cmdBuffer, dynamicOffset, descriptorSets);
 			}
-			_FORCE_INLINE_ static void Draw(CommandBuffer* commandBuffer, DrawType type, uint32_t count, DataType datayType = DataType::UNSIGNED_INT, void* indices = nullptr) {
+			inline static void Draw(CommandBuffer* commandBuffer, DrawType type, uint32_t count, DataType datayType = DataType::UNSIGNED_INT, void* indices = nullptr) {
 				s_Instance->DrawInternal(commandBuffer, type, count, datayType, indices);
 			}
-			_FORCE_INLINE_ static void DrawIndexed(CommandBuffer* commandBuffer, DrawType type, uint32_t count, uint32_t start = 0) {
+			inline static void DrawIndexed(CommandBuffer* commandBuffer, DrawType type, uint32_t count, uint32_t start = 0) {
 				s_Instance->DrawIndexedInternal(commandBuffer, type, count, start);
 			}
-			_FORCE_INLINE_ static const std::string& GetTitle() {
+			inline static const std::string& GetTitle() {
 				return s_Instance->GetTitleInternal();
 			}
-			_FORCE_INLINE_ static Swapchain* GetSwapchain() {
+			inline static Swapchain* GetSwapchain() {
 				return s_Instance->GetSwapchainInternal();
 			}
 

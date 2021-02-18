@@ -21,7 +21,7 @@ namespace Easel {
 			virtual bool GetResultReady() = 0;
 			virtual void End() = 0;
 
-			_FORCE_INLINE_ bool GetInUse() const { return m_InUse; }
+			inline bool GetInUse() const { return m_InUse; }
 			
 			bool m_InUse;
 

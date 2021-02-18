@@ -9,7 +9,7 @@ namespace Easel {
 	/* Bogus implementation unaware of multiprocessing */
 
 	template <class T>
-	static _FORCE_INLINE_ T atomic_conditional_increment(volatile T* pw) {
+	static inline T atomic_conditional_increment(volatile T* pw) {
 		if (*pw == 0)
 			return 0;
 
@@ -19,14 +19,14 @@ namespace Easel {
 	}
 
 	template <class T>
-	static _FORCE_INLINE_ T atomic_decrement(volatile T* pw) {
+	static inline T atomic_decrement(volatile T* pw) {
 		(*pw)--;
 
 		return *pw;
 	}
 
 	template <class T>
-	static _FORCE_INLINE_ T atomic_increment(volatile T* pw) {
+	static inline T atomic_increment(volatile T* pw) {
 		(*pw)++;
 
 		return *pw;
@@ -40,14 +40,14 @@ namespace Easel {
 	}
 
 	template <class T, class V>
-	static _FORCE_INLINE_ T atomic_add(volatile T* pw, volatile V val) {
+	static inline T atomic_add(volatile T* pw, volatile V val) {
 		(*pw) += val;
 
 		return *pw;
 	}
 
 	template <class T, class V>
-	static _FORCE_INLINE_ T atomic_exchange_if_greater(volatile T* pw, volatile V val) {
+	static inline T atomic_exchange_if_greater(volatile T* pw, volatile V val) {
 		if (val > * pw)
 			*pw = val;
 
@@ -62,7 +62,7 @@ namespace Easel {
 	// Clang states it supports GCC atomic builtins.
 
 	template <class T>
-	static _FORCE_INLINE_ T atomic_conditional_increment(volatile T* pw) {
+	static inline T atomic_conditional_increment(volatile T* pw) {
 		while (true) {
 
 			T tmp = static_cast<T const volatile&>(*pw);
@@ -74,27 +74,27 @@ namespace Easel {
 	}
 
 	template <class T>
-	static _FORCE_INLINE_ T atomic_decrement(volatile T* pw) {
+	static inline T atomic_decrement(volatile T* pw) {
 		return __sync_sub_and_fetch(pw, 1);
 	}
 
 	template <class T>
-	static _FORCE_INLINE_ T atomic_increment(volatile T* pw) {
+	static inline T atomic_increment(volatile T* pw) {
 		return __sync_add_and_fetch(pw, 1);
 	}
 
 	template <class T, class V>
-	static _FORCE_INLINE_ T atomic_sub(volatile T* pw, volatile V val) {
+	static inline T atomic_sub(volatile T* pw, volatile V val) {
 		return __sync_sub_and_fetch(pw, val);
 	}
 
 	template <class T, class V>
-	static _FORCE_INLINE_ T atomic_add(volatile T* pw, volatile V val) {
+	static inline T atomic_add(volatile T* pw, volatile V val) {
 		return __sync_add_and_fetch(pw, val);
 	}
 
 	template <class T, class V>
-	static _FORCE_INLINE_ T atomic_exchange_if_greater(volatile T* pw, volatile V val) {
+	static inline T atomic_exchange_if_greater(volatile T* pw, volatile V val) {
 		while (true) {
 
 			T tmp = static_cast<T const volatile&>(*pw);
@@ -135,23 +135,23 @@ namespace Easel {
 		uint32_t count;
 
 	public:
-		_FORCE_INLINE_ bool ref() {
+		inline bool ref() {
 			return atomic_conditional_increment(&count) != 0;
 		}
 
-		_FORCE_INLINE_ uint32_t refval() {
+		inline uint32_t refval() {
 			return atomic_conditional_increment(&count);
 		}
 
-		_FORCE_INLINE_ bool unref() {
+		inline bool unref() {
 			return atomic_decrement(&count) == 0;
 		}
 
-		_FORCE_INLINE_ uint32_t get() const {
+		inline uint32_t get() const {
 			return count;
 		}
 
-		_FORCE_INLINE_ void init(uint32_t p_value = 1) {
+		inline void init(uint32_t p_value = 1) {
 			count = p_value;
 		}
 	};

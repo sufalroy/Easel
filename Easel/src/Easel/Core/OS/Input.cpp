@@ -9,7 +9,8 @@ namespace Easel {
 		s_Input = new Input();
 	}
 
-	Input::Input() : m_WindowFocus(true) {
+	Input::Input()
+		: m_WindowFocus(true) {
 
 		Reset();
 	}

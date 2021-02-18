@@ -1,10 +1,10 @@
 #pragma once
 
 #include "Easel/Core/Base.h"
-#include "Easel/Core/Reference.h"
 
 #include <cstdint>
 #include <glm/glm.hpp>
+
 
 namespace Easel {
 
@@ -34,7 +34,7 @@ namespace Easel {
 			bool screenFBO = false;
 			Texture** attachments;
 			TextureType* attachmentTypes;
-			Graphics::RenderPass* renderPass;
+			RenderPass* renderPass;
 		};
 
 		class EASEL_EXPORT Framebuffer {

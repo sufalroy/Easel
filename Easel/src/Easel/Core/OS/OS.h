@@ -15,8 +15,7 @@ namespace Easel {
 		POWERSTATE_CHARGED
 	};
 
-	class EASEL_EXPORT OS
-	{
+	class EASEL_EXPORT OS {
 	public:
 		OS() = default;
 		virtual ~OS() = default;

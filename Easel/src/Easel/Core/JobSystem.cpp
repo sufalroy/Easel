@@ -25,7 +25,7 @@ namespace Easel {
 			// Push an item to the end if there is free space
 			//	Returns true if succesful
 			//	Returns false if there is not enough space
-			_FORCE_INLINE_ bool push_back(const T& item) {
+			inline bool push_back(const T& item) {
 				bool result = false;
 				lock.lock();
 				size_t next = (head + 1) % capacity;
@@ -41,7 +41,7 @@ namespace Easel {
 			// Get an item if there are any
 			//	Returns true if succesful
 			//	Returns false if there are no items
-			_FORCE_INLINE_ bool pop_front(T& item) {
+			inline bool pop_front(T& item) {
 				bool result = false;
 				lock.lock();
 				if (tail != head) {
@@ -119,7 +119,7 @@ namespace Easel {
 			}
 
 			// This little function will not let the System to be deadlocked while the main thread is waiting for something
-			_FORCE_INLINE_ void poll() {
+			inline void poll() {
 
 				wakeCondition.notify_one(); // wake one worker thread
 				std::this_thread::yield(); // allow this thread to be rescheduled

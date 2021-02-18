@@ -29,12 +29,12 @@ namespace Easel {
 		FilePath = projectRoot + projectName + std::string(".esproj");
 
 		const std::string root = ROOT_DIR;
-		VFS::Get()->Mount("Meshes", root + projectRoot + "/res/meshes");
-		VFS::Get()->Mount("Textures", root + projectRoot + "/res/textures");
-		VFS::Get()->Mount("Sounds", root + projectRoot + "/res/sounds");
-		VFS::Get()->Mount("Scripts", root + projectRoot + "/res/scripts");
-		VFS::Get()->Mount("Scenes", root + projectRoot + "/res/scenes");
-		VFS::Get()->Mount("EngineShaders", root + "/Easel/Shaders");
+		VFS::Get()->Mount("Meshes", root + projectRoot + std::string("Assets/Meshes"));
+		VFS::Get()->Mount("Textures", root + projectRoot + std::string("Assets/Textures"));
+		VFS::Get()->Mount("Sounds", root + projectRoot + std::string("Assets/Sounds"));
+		VFS::Get()->Mount("Scripts", root + projectRoot + std::string("Assets/Scripts"));
+		VFS::Get()->Mount("Scenes", root + projectRoot + std::string("Assets/Scenes"));
+		VFS::Get()->Mount("CoreShaders", root + std::string("/Easel/Assets/Shaders"));
 
 		Deserialise(FilePath);
 
@@ -51,8 +51,9 @@ namespace Easel {
 		windowProperties.VSync = VSync;
 
 		m_Window = UniqueRef<Window>(Window::Create(windowProperties));
-
 		m_Window->SetEventCallback(BIND_EVENT_FN(Application::OnEvent));
+
+		m_EditorState = EditorState::Play;
 	}
 
 	Application::~Application() {

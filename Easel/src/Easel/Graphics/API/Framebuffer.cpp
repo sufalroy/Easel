@@ -12,6 +12,11 @@ namespace Easel {
 
 		Framebuffer* (*Framebuffer::CreateFunc)(const FramebufferInfo&) = nullptr;
 
+		Framebuffer* Framebuffer::Create(const FramebufferInfo& framebufferInfo) {
+			EASEL_ASSERT(CreateFunc, "No Framebuffer Create Function");
+			return CreateFunc(framebufferInfo);
+		}
+
 		static std::unordered_map<std::size_t, Ref<Framebuffer>> m_FramebufferCache;
 
 		Ref<Framebuffer> Framebuffer::Get(const FramebufferInfo& framebufferInfo) {
@@ -29,11 +34,6 @@ namespace Easel {
 			auto framebuffer = Ref<Framebuffer>(Create(framebufferInfo));
 			m_FramebufferCache[hash] = framebuffer;
 			return framebuffer;
-		}
-
-		Framebuffer* Framebuffer::Create(const FramebufferInfo& framebufferInfo) {
-			EASEL_ASSERT(CreateFunc, "No Framebuffer Create Function");
-			return CreateFunc(framebufferInfo);
 		}
 
 		void Framebuffer::ClearCache() {

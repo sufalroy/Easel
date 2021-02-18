@@ -11,7 +11,6 @@ namespace Easel {
 			EASEL_ASSERT(CreateFunc, "No Swapchain Create Function");
 			return CreateFunc(width, height);
 		}
-
 	}
 }
 

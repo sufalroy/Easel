@@ -94,23 +94,23 @@ namespace Easel {
 				m_Fields.push_back(field);
 			}
 
-			_FORCE_INLINE_ void SetOffset(uint32_t offset) {
+			inline void SetOffset(uint32_t offset) {
 				m_Offset = offset;
 			}
 
-			_FORCE_INLINE_ const std::string& GetName() const {
+			inline const std::string& GetName() const {
 				return m_Name;
 			}
 
-			_FORCE_INLINE_ uint32_t GetSize() const {
+			inline uint32_t GetSize() const {
 				return m_Size;
 			}
 
-			_FORCE_INLINE_ uint32_t GetOffset() const {
+			inline uint32_t GetOffset() const {
 				return m_Offset;
 			}
 
-			_FORCE_INLINE_ const std::vector<ShaderUniformDeclaration*>& GetFields() const {
+			inline const std::vector<ShaderUniformDeclaration*>& GetFields() const {
 				return m_Fields;
 			}
 		};

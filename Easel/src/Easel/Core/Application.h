@@ -9,6 +9,7 @@
 
 namespace Easel {
 
+	class Timer;
 	class Window;
 	struct WindowProperties;
 	class Event;
@@ -76,6 +77,7 @@ namespace Easel {
 
 		glm::vec2 GetWindowSize() const;
 
+
 		static Application& Get() { return *s_Instance; }
 
 		static void Release() {
@@ -96,9 +98,11 @@ namespace Easel {
 
 			archive(cereal::make_nvp("Project Version", projectVersion));
 			//Version 1
+
+			auto windowSize = GetWindowSize();
 			archive(cereal::make_nvp("RenderAPI", RenderAPI),
-				cereal::make_nvp("Width", m_Window->GetWidth()),
-				cereal::make_nvp("Height", m_Window->GetHeight()),
+				cereal::make_nvp("Width", (int)windowSize.x),
+				cereal::make_nvp("Height", (int)windowSize.y),
 				cereal::make_nvp("Fullscreen", Fullscreen),
 				cereal::make_nvp("VSync", VSync),
 				cereal::make_nvp("ShowConsole", ShowConsole),
@@ -143,7 +147,7 @@ namespace Easel {
 
 		AppState m_CurrentState = AppState::Loading;
 		EditorState m_EditorState = EditorState::Preview;
-		AppType m_AppType = AppType::Game;
+		AppType m_AppType = AppType::Editor;
 
 		static Application* s_Instance;
 		

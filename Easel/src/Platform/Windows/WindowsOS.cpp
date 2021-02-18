@@ -10,6 +10,8 @@
 	#include "Platform/GLFW/GLFWWindow.h"
 #endif
 
+#include <Windows.h>
+
 extern Easel::Application* Easel::CreateApplication();
 
 namespace Easel {

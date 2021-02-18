@@ -2,9 +2,8 @@
 #include "Easel/Core/OS/FileSystem.h"
 
 #ifdef EASEL_PLATFORM_WINDOWS
-	#include <Windows.h>
-	#include <wtypes.h>
-
+#include <Windows.h>
+#include <wtypes.h>
 
 namespace Easel {
 

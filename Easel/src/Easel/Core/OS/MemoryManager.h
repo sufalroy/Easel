@@ -28,7 +28,6 @@ namespace Easel {
 			currentUsed(0), totalAllocations(0) {
 
 		}
-
 	};
 
 	class MemoryManager {
@@ -45,7 +44,7 @@ namespace Easel {
 		static void OnShutdown();
 
 		static MemoryManager* Get();
-		_FORCE_INLINE_ MemoryStats GetMemoryStats() const {
+		inline MemoryStats GetMemoryStats() const {
 			return m_MemoryStats;
 		}
 

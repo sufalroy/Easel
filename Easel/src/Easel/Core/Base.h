@@ -46,6 +46,8 @@
 	#define EASEL_DEBUG_METHOD_CALL(x);
 #endif // EASEL_DEBUG
 
+#define MAX_OBJECTS 2048
+
 #define STRINGIZE2(s) #s
 #define STRINGIZE(s) STRINGIZE2(s)
 #define ROOT_DIR STRINGIZE(EASEL_ROOT_DIR)
@@ -60,25 +62,10 @@
 	#define EASEL_ENABLE_ASSERTS
 #endif // EASEL_DEBUG
 
-#ifndef _ALWAYS_INLINE_
-	#if defined(__GNUC__) && (__GNUC__ >= 4)
-		#define _ALWAYS_INLINE_ __attribute__((always_inline)) inline
-	#elif defined(__llvm__)
-		#define _ALWAYS_INLINE_ __attribute__((always_inline)) inline
-	#elif defined(_MSC_VER)
-		#define _ALWAYS_INLINE_ __forceinline
-	#else
-		#define _ALWAYS_INLINE_ inline
-	#endif
-#endif
-
-#ifndef _FORCE_INLINE_
-	#ifdef DISABLE_FORCED_INLINE
-		#define _FORCE_INLINE_ inline
-	#else
-		#define _FORCE_INLINE_ _ALWAYS_INLINE_
-	#endif // DISABLE_FORCED_INLINE
-#endif // !_FORCE_INLINE_
+#define HEX2CHR(m_hex) \
+((m_hex >= '0' && m_hex <= '9') ? (m_hex - '0') : \
+((m_hex >= 'A' && m_hex <= 'F') ? (10 + m_hex - 'A') : \
+((m_hex >= 'a' && m_hex <= 'f') ? (10 + m_hex - 'a') : 0)))
 
 //TODO: Segregate error messages for Core and Client 
 #ifdef EASEL_ENABLE_ASSERTS
@@ -104,3 +91,30 @@
 #define NONCOPYABLE(type_identifier)								\
     type_identifier(const type_identifier&) = delete;				\
     type_identifier& operator=(const type_identifier&) = delete;
+
+#if defined(_MSC_VER)
+	#define DISABLE_WARNING_PUSH           __pragma(warning( push ))
+	#define DISABLE_WARNING_POP            __pragma(warning( pop ))
+	#define DISABLE_WARNING(warningNumber) __pragma(warning( disable : warningNumber ))
+	
+	#define DISABLE_WARNING_UNREFERENCED_FORMAL_PARAMETER    DISABLE_WARNING(4100)
+	#define DISABLE_WARNING_UNREFERENCED_FUNCTION            DISABLE_WARNING(4505)
+	#define DISABLE_WARNING_CONVERSION_TO_SMALLER_TYPE       DISABLE_WARNING(4267)
+
+#elif defined(__GNUC__) || defined(__clang__)
+	#define DO_PRAGMA(X) _Pragma(#X)
+	#define DISABLE_WARNING_PUSH           DO_PRAGMA(GCC diagnostic push)
+	#define DISABLE_WARNING_POP            DO_PRAGMA(GCC diagnostic pop)
+	#define DISABLE_WARNING(warningName)   DO_PRAGMA(GCC diagnostic ignored #warningName)
+	
+	#define DISABLE_WARNING_UNREFERENCED_FORMAL_PARAMETER    DISABLE_WARNING(-Wunused-parameter)
+	#define DISABLE_WARNING_UNREFERENCED_FUNCTION            DISABLE_WARNING(-Wunused-function)
+	#define DISABLE_WARNING_CONVERSION_TO_SMALLER_TYPE       DISABLE_WARNING(-Wconversion)
+
+#else
+	#define DISABLE_WARNING_PUSH
+	#define DISABLE_WARNING_POP
+	#define DISABLE_WARNING_UNREFERENCED_FORMAL_PARAMETER
+	#define DISABLE_WARNING_UNREFERENCED_FUNCTION
+	#define DISABLE_WARNING_CONVERSION_TO_SMALLER_TYPE
+#endif

@@ -57,6 +57,18 @@ namespace Easel {
 
 			Push(name, Format::R32G32B32A32_FLOAT, sizeof(glm::vec4), normalized);
 		}
+
+		template<>
+		void BufferLayout::Push<glm::ivec3>(const std::string& name, bool normalized) {
+
+			Push(name, Format::R32G32B32_INT, sizeof(glm::ivec3), normalized);
+		}
+
+		template<>
+		void BufferLayout::Push<glm::ivec4>(const std::string& name, bool normalized) {
+
+			Push(name, Format::R32G32B32A32_INT, sizeof(glm::ivec4), normalized);
+		}
 	}
 }
 

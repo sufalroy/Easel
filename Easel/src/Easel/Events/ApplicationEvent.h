@@ -11,8 +11,8 @@ namespace Easel {
 		WindowResizeEvent(uint32_t width,  uint32_t height) 
 			: m_Width(width), m_Height(height) {}
 
-		_FORCE_INLINE_ uint32_t GetWidth() const { return m_Width; }
-		_FORCE_INLINE_ uint32_t GetHeight() const { return m_Height; }
+		inline uint32_t GetWidth() const { return m_Width; }
+		inline uint32_t GetHeight() const { return m_Height; }
 
 		std::string ToString() const override {
 			std::stringstream ss;

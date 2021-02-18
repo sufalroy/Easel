@@ -1,20 +1,17 @@
 #pragma once
 
+#include "Easel/Core/Base.h"
+
 #ifdef EASEL_PLATFORM_WINDOWS
 	#ifndef NOMINMAX
 		#define NOMINMAX
 	#endif // !NOMINMAX
 #endif // EASEL_PLATFORM_WINDOWS
 
-
-#include "Easel/Core/Base.h"
-#include "Easel/Core/ReferenceCounter.h"
-
 #pragma warning(push, 0)
 #include <spdlog/spdlog.h>
 #include <spdlog/fmt/ostr.h>
 #pragma warning(pop)
-
 
 //Core Log Macros
 #define EASEL_CORE_TRACE(...)    SPDLOG_LOGGER_CALL(::Easel::Debug::Log::GetCoreLogger(), spdlog::level::level_enum::trace, __VA_ARGS__)
@@ -40,8 +37,8 @@ namespace Easel {
 			static void OnInit();
 			static void OnRelease();
 
-			_FORCE_INLINE_ static std::shared_ptr<spdlog::logger>& GetCoreLogger() { return s_CoreLogger; }
-			_FORCE_INLINE_ static std::shared_ptr<spdlog::logger>& GetClientLogger() { return s_ClientLogger; }
+			inline static std::shared_ptr<spdlog::logger>& GetCoreLogger() { return s_CoreLogger; }
+			inline static std::shared_ptr<spdlog::logger>& GetClientLogger() { return s_ClientLogger; }
 		private:
 			static std::shared_ptr<spdlog::logger> s_CoreLogger;
 			static std::shared_ptr<spdlog::logger> s_ClientLogger;

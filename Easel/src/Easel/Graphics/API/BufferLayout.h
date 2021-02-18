@@ -29,10 +29,11 @@ namespace Easel {
 				EASEL_ASSERT(false, "Unknown type!");
 			}
 
-			_FORCE_INLINE_ const std::vector<BufferElement>& GetLayout() const {
+			inline const std::vector<BufferElement>& GetLayout() const {
 				return m_Layout;
 			}
-			_FORCE_INLINE_ uint32_t GetStride() const {
+
+			inline uint32_t GetStride() const {
 				return m_Size;
 			}
 
@@ -52,5 +53,9 @@ namespace Easel {
 		void EASEL_EXPORT BufferLayout::Push<glm::vec3>(const std::string& name, bool normalized);
 		template<>
 		void EASEL_EXPORT BufferLayout::Push<glm::vec4>(const std::string& name, bool normalized);
+		template<>
+		void EASEL_EXPORT BufferLayout::Push<glm::ivec3>(const std::string& name, bool normalized);
+		template<>
+		void EASEL_EXPORT BufferLayout::Push<glm::ivec4>(const std::string& name, bool normalized);
 	}
 }

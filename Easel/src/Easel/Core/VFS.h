@@ -23,7 +23,7 @@ namespace Easel {
 		static void OnInit();
 		static void OnShutdown();
 
-		_FORCE_INLINE_ static VFS* Get() {
+		inline static VFS* Get() {
 			return s_Instance;
 		}
 

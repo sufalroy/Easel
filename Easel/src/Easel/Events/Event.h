@@ -42,11 +42,11 @@ namespace Easel {
 		virtual uint32_t GetCategoryFlags() const = 0;
 		virtual std::string ToString() const { return GetName(); }
 
-		_FORCE_INLINE_ bool IsInCategory(EventCategory category) {
+		inline bool IsInCategory(EventCategory category) {
 			return GetCategoryFlags() & category;
 		}
 
-		_FORCE_INLINE_ bool Handled() const { return m_Handled; }
+		inline bool Handled() const { return m_Handled; }
 
 	protected:
 		bool m_Handled = false;
@@ -72,7 +72,7 @@ namespace Easel {
 		Event& m_Event;
 	};
 
-	_FORCE_INLINE_ std::ostream& operator<<(std::ostream& os, const Event& e) {
+	inline std::ostream& operator<<(std::ostream& os, const Event& e) {
 		return os << e.ToString();
 	}
 }

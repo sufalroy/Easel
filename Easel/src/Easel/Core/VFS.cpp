@@ -1,6 +1,5 @@
 #include "Precompiled.h"
 #include "Easel/Core/VFS.h"
-
 #include "Easel/Core/OS/FileSystem.h"
 
 namespace Easel {
