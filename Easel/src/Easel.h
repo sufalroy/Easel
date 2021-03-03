@@ -6,6 +6,9 @@
 #include "Easel/Core/Application.h"
 //--------------------------------------
 
+//Maths---------------------------------
+#include "Easel/Maths/Maths.h"
+//--------------------------------------
 
 //System--------------------------------
 #include "Easel/Core/VFS.h"
@@ -16,8 +19,8 @@
 #include "Easel/Core/OS/FileSystem.h"
 //--------------------------------------
 
-
 //Utilities----------------------------
+#include "Easel/Utils/Timer.h"
 #include "Easel/Utils/TimeStep.h"
 #include "Easel/Utils/LoadImage.h"
 #include "Easel/Utils/StringUtils.h"

@@ -6,6 +6,7 @@
 #include "GLDebug.h"
 #include "GLTools.h"
 #include "GLDescriptorSet.h"
+#include "Easel/Graphics/Material.h"
 #include "GL.h"
 
 namespace Easel {

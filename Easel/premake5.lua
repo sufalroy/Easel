@@ -56,9 +56,13 @@ project "Easel"
 		"TRACY_ENABLE"
 	}
 
+	filter 'architecture:x86_64'
+		defines {"EASEL_SSE"}
 
 	filter "system:windows"
 		systemversion "latest"
+		disablewarnings { 4307 }
+		characterset ("MBCS")
 
 		defines 
 		{
@@ -78,9 +82,7 @@ project "Easel"
 			"/MP", "/bigobj"
 		}
 
-		disablewarnings { 4307 }
 
-		characterset ("MBCS")
 
 		filter 'files:3rdparty/**.cpp'
 			flags  { 'NoPCH' }

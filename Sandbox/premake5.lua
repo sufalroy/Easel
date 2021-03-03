@@ -34,6 +34,11 @@ project "Sandbox"
 		"TRACY_ENABLE"
 	}
 
+	filter { "files:3rdparty/**"}
+		warnings "Off"
+
+	filter 'architecture:x86_64'
+		defines {"EASEL_SSE"}
 
 	filter "system:windows"
 		systemversion "latest"
