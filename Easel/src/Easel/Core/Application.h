@@ -21,6 +21,10 @@ namespace Easel {
 		enum class RenderAPI : uint32_t;
 	}
 
+	namespace Maths {
+		class Vector2;
+	}
+
 	enum class AppState {
 		Running,
 		Loading,
@@ -75,7 +79,7 @@ namespace Easel {
 			m_EditorState = state;
 		}
 
-		glm::vec2 GetWindowSize() const;
+		Maths::Vector2 GetWindowSize() const;
 
 
 		static Application& Get() { return *s_Instance; }
@@ -97,9 +101,15 @@ namespace Easel {
 			int projectVersion = 1;
 
 			archive(cereal::make_nvp("Project Version", projectVersion));
-			//Version 1
-
 			auto windowSize = GetWindowSize();
+
+			if (windowSize.x == 0)
+				windowSize.x = 800;
+
+			if (windowSize.y == 0)
+				windowSize.y = 600;
+			
+			//Version 1
 			archive(cereal::make_nvp("RenderAPI", RenderAPI),
 				cereal::make_nvp("Width", (int)windowSize.x),
 				cereal::make_nvp("Height", (int)windowSize.y),

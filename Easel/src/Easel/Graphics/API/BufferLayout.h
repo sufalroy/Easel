@@ -2,8 +2,7 @@
 
 #include "Easel/Core/Base.h"
 #include "Easel/Graphics/API/DescriptorSet.h"
-
-#include <glm/glm.hpp>
+#include "Easel/Maths/Maths.h"
 
 namespace Easel {
 
@@ -48,14 +47,14 @@ namespace Easel {
 		template<>
 		void EASEL_EXPORT BufferLayout::Push<uint8_t>(const std::string& name, bool normalized);
 		template<>
-		void EASEL_EXPORT BufferLayout::Push<glm::vec2>(const std::string& name, bool normalized);
+		void EASEL_EXPORT BufferLayout::Push<Maths::Vector2>(const std::string& name, bool normalized);
 		template<>
-		void EASEL_EXPORT BufferLayout::Push<glm::vec3>(const std::string& name, bool normalized);
+		void EASEL_EXPORT BufferLayout::Push<Maths::Vector3>(const std::string& name, bool normalized);
 		template<>
-		void EASEL_EXPORT BufferLayout::Push<glm::vec4>(const std::string& name, bool normalized);
+		void EASEL_EXPORT BufferLayout::Push<Maths::Vector4>(const std::string& name, bool normalized);
 		template<>
-		void EASEL_EXPORT BufferLayout::Push<glm::ivec3>(const std::string& name, bool normalized);
+		void EASEL_EXPORT BufferLayout::Push<Maths::IntVector3>(const std::string& name, bool normalized);
 		template<>
-		void EASEL_EXPORT BufferLayout::Push<glm::ivec4>(const std::string& name, bool normalized);
+		void EASEL_EXPORT BufferLayout::Push<Maths::IntVector4>(const std::string& name, bool normalized);
 	}
 }

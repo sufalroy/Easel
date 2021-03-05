@@ -7,6 +7,8 @@
 #include <GLFW/glfw3.h>
 #endif // !EASEL_PLATFORM_MOBILE
 
+#include "Easel/Maths/Matrix4.h"
+
 #ifdef EASEL_PLATFORM_WINDOWS
 #undef NOGDI
 #include <glad/glad_wgl.h>
@@ -200,6 +202,7 @@ namespace Easel {
 			glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, &unusedIds, true);
 #endif
 #endif
+			Maths::Matrix4::SetUpCoordSystem(false, false);
 		}
 
 		GLContext::~GLContext() = default;

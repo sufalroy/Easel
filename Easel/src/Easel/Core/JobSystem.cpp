@@ -1,12 +1,11 @@
 #include "Precompiled.h"
 #include "Easel/Core/JobSystem.h"
+#include "Easel/Maths/Maths.h"
 
 #include <atomic>
 #include <thread>
 #include <condition_variable>
 #include <deque>
-
-#include <glm/glm.hpp>
 
 #ifdef EASEL_PLATFORM_WINDOWS
 #define NOMINMAX
@@ -77,7 +76,7 @@ namespace Easel {
 				auto numCores = std::thread::hardware_concurrency();
 
 				// Calculate the actual number of worker threads we want:
-				numThreads = glm::max(1U, numCores);
+				numThreads = Maths::Max(1U, numCores);
 
 				for (uint32_t threadID = 0; threadID < numThreads; ++threadID) {
 					std::thread worker([] {
@@ -157,7 +156,7 @@ namespace Easel {
 
 						// Calculate the current group's offset into the jobs:
 						const uint32_t groupJobOffset = groupIndex * groupSize;
-						const uint32_t groupJobEnd = glm::min(groupJobOffset + groupSize, jobCount);
+						const uint32_t groupJobEnd = Maths::Min(groupJobOffset + groupSize, jobCount);
 
 						JobDispatchArgs args;
 						args.groupIndex = groupIndex;

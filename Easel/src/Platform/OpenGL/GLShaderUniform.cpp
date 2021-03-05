@@ -1,8 +1,7 @@
 #include "Precompiled.h"
 #include "GLShaderUniform.h"
 #include "Easel/Graphics/API/Shader.h"
-
-#include <glm/glm.hpp>
+#include "Easel/Maths/Maths.h"
 
 namespace Easel {
 
@@ -51,17 +50,17 @@ namespace Easel {
 			case GLShaderUniformDeclaration::Type::UINT:
 				return 4;
 			case GLShaderUniformDeclaration::Type::VEC2:
-				return sizeof(glm::vec2); // 4 * 2;
+				return sizeof(Maths::Vector2); // 4 * 2;
 			case GLShaderUniformDeclaration::Type::VEC3:
-				return sizeof(glm::vec3); //4 * 3;
+				return sizeof(Maths::Vector3); //4 * 3;
 			case GLShaderUniformDeclaration::Type::VEC4:
-				return sizeof(glm::vec4); //4 * 4;
+				return sizeof(Maths::Vector4); //4 * 4;
 			case GLShaderUniformDeclaration::Type::MAT3:
-				return sizeof(glm::mat3); //4 * 3 * 3;
+				return sizeof(Maths::Matrix3); //4 * 3 * 3;
 			case GLShaderUniformDeclaration::Type::MAT4:
-				return sizeof(glm::mat4); //4 * 4 * 4;
+				return sizeof(Maths::Matrix4); //4 * 4 * 4;
 			case GLShaderUniformDeclaration::Type::MAT4ARRAY:
-				return sizeof(glm::mat4); //4 * 4 * 4;
+				return sizeof(Maths::Matrix4); //4 * 4 * 4;
 			default:
 				return 0;
 			}

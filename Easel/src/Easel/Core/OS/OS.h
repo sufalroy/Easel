@@ -1,7 +1,7 @@
 #pragma once
 #include "Easel/Core/Base.h"
+#include "Easel/Maths/Maths.h"
 
-#include <glm/glm.hpp>
 #include <string>
 
 namespace Easel {
@@ -33,7 +33,7 @@ namespace Easel {
 		virtual std::string GetExecutablePath() = 0;
 		virtual std::string GetAssetPath() { return ""; };
 		virtual void Vibrate() const {};
-		virtual void SetTitleBarColour(const glm::vec4& colour, bool dark = true) {};
+		virtual void SetTitleBarColour(const Maths::Vector4& colour, bool dark = true) {};
 
 		//Mobile only
 		virtual void ShowKeyboard() {};

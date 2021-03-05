@@ -5,7 +5,6 @@
 #include "GLRenderer.h"
 #include "GLDebug.h"
 
-
 namespace Easel {
 
 	namespace Graphics {
@@ -24,7 +23,7 @@ namespace Easel {
 			return false;
 		}
 
-		void GLRenderPass::BeginRenderpass(CommandBuffer* commandBuffer, const glm::vec4& clearColour, Framebuffer* frame, SubPassContents contents, uint32_t width, uint32_t height, bool beginCommandBuffer) const {
+		void GLRenderPass::BeginRenderpass(CommandBuffer* commandBuffer, const Maths::Vector4& clearColour, Framebuffer* frame, SubPassContents contents, uint32_t width, uint32_t height, bool beginCommandBuffer) const {
 			if (frame != nullptr) {
 				frame->Bind(width, height);
 				//frame->SetClearColour(clearColour);

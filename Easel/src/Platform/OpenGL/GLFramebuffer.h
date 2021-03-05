@@ -1,9 +1,9 @@
 #pragma once
 #include "Easel/Graphics/API/Framebuffer.h"
+#include "Easel/Maths/Maths.h"
 #include "GL.h"
 #include "GLTexture.h"
 
-#include <glm/glm.hpp>
 
 namespace Easel {
 
@@ -30,7 +30,7 @@ namespace Easel {
 
 			GLenum GetAttachmentPoint(TextureFormat format);
 
-			inline void SetClearColour(const glm::vec4& colour) override {
+			inline void SetClearColour(const Maths::Vector4& colour) override {
 				m_ClearColour = colour;
 			}
 			void AddTextureAttachment(TextureFormat format, Texture* texture) override;
@@ -47,7 +47,7 @@ namespace Easel {
 		private:
 			uint32_t m_Handle;
 			uint32_t m_Width, m_Height, m_ColourAttachmentCount;
-			glm::vec4 m_ClearColour;
+			Maths::Vector4 m_ClearColour;
 			std::vector<GLenum> m_AttachmentData;
 			bool m_ScreenFramebuffer = false;
 		};

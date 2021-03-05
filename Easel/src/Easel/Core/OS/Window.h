@@ -1,8 +1,7 @@
 #pragma once
 
 #include "Easel/Events/Event.h"
-
-#include <glm/glm.hpp>
+#include "Easel/Maths/Maths.h"
 
 namespace Easel {
 
@@ -59,7 +58,7 @@ namespace Easel {
 		virtual void* GetHandle() { return nullptr; };
 		virtual float GetScreenRatio() const = 0;
 		virtual void HideMouse(bool hide) {};
-		virtual void SetMousePosition(const glm::vec2& pos) {};
+		virtual void SetMousePosition(const Maths::Vector2& pos) {};
 		virtual void SetEventCallback(const EventCallbackFn& callback) = 0;
 		virtual void UpdateCursorImGui() = 0;
 		virtual void SetIcon(const std::string& filePath, const std::string& smallIconFilePath = "") = 0;
@@ -74,7 +73,7 @@ namespace Easel {
 		Window() = default;
 
 		bool m_Init = false;
-		glm::vec2 m_Position = {0.0f, 0.0f};
+		Maths::Vector2 m_Position;
 		bool m_VSync = false;
 		bool m_HasResized = false;
 	};

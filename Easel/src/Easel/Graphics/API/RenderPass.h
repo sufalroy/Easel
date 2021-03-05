@@ -2,8 +2,7 @@
 
 #include "Easel/Core/Base.h"
 #include "Easel/Core/Reference.h"
-
-#include <glm/glm.hpp>
+#include "Easel/Maths/Maths.h"
 
 namespace Easel {
 
@@ -38,7 +37,7 @@ namespace Easel {
 			static void ClearCache();
 			static void DeleteUnusedCache();
 
-			virtual void BeginRenderpass(CommandBuffer* commandBuffer, const glm::vec4& clearColour, Framebuffer* frame, SubPassContents contents, uint32_t width, uint32_t height, bool beginCommandBuffer = true) const = 0;
+			virtual void BeginRenderpass(CommandBuffer* commandBuffer, const Maths::Vector4& clearColour, Framebuffer* frame, SubPassContents contents, uint32_t width, uint32_t height, bool beginCommandBuffer = true) const = 0;
 			virtual void EndRenderpass(CommandBuffer* commandBuffer, bool endCommandBuffer = true) = 0;
 			virtual int GetAttachmentCount() const = 0;
 

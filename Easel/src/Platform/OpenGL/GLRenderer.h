@@ -3,9 +3,8 @@
 #include "Easel/Graphics/API/Renderer.h"
 #include "Easel/Graphics/API/Pipeline.h"
 #include "Easel/Core/OS/Window.h"
+#include "Easel/Maths/Maths.h"
 #include "GLSwapchain.h"
-
-#include <glm/glm.hpp>
 
 namespace Easel {
 

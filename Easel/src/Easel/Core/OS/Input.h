@@ -7,7 +7,7 @@
 #include "Easel/Core/OS/KeyCodes.h"
 #include "Easel/Core/OS/MouseCodes.h"
 
-#include <glm/glm.hpp>
+#include "Easel/Maths/Maths.h"
 
 #define MAX_KEYS 1024
 #define MAX_BUTTONS 32
@@ -36,8 +36,8 @@ namespace Easel {
 		void SetMouseOnScreen(bool onScreen) { m_MouseOnScreen = onScreen; }
 		bool GetMouseOnScreen() const { return m_MouseOnScreen; }
 
-		void StoreMousePosition(float xpos, float ypos) { m_MousePosition = glm::vec2(float(xpos), float(ypos)); }
-		const glm::vec2& GetMousePosition() const { return m_MousePosition; }
+		void StoreMousePosition(float xpos, float ypos) { m_MousePosition = Maths::Vector2(float(xpos), float(ypos)); }
+		const Maths::Vector2& GetMousePosition() const { return m_MousePosition; }
 
 		void SetWindowFocus(bool focus) { m_WindowFocus = focus; }
 		bool GetWindowFocus() const { return m_WindowFocus; }
@@ -74,6 +74,6 @@ namespace Easel {
 		bool m_MouseOnScreen;
 		bool m_WindowFocus;
 
-		glm::vec2 m_MousePosition;
+		Maths::Vector2 m_MousePosition;
 	};
 }

@@ -854,22 +854,22 @@ namespace Easel {
 				SetUniform1i(uniform->GetLocation(), *reinterpret_cast<int*>(&data[offset]));
 				break;
 			case GLShaderUniformDeclaration::Type::VEC2:
-				SetUniform2f(uniform->GetLocation(), *reinterpret_cast<glm::vec2*>(&data[offset]));
+				SetUniform2f(uniform->GetLocation(), *reinterpret_cast<Maths::Vector2*>(&data[offset]));
 				break;
 			case GLShaderUniformDeclaration::Type::VEC3:
-				SetUniform3f(uniform->GetLocation(), *reinterpret_cast<glm::vec3*>(&data[offset]));
+				SetUniform3f(uniform->GetLocation(), *reinterpret_cast<Maths::Vector3*>(&data[offset]));
 				break;
 			case GLShaderUniformDeclaration::Type::VEC4:
-				SetUniform4f(uniform->GetLocation(), *reinterpret_cast<glm::vec4*>(&data[offset]));
+				SetUniform4f(uniform->GetLocation(), *reinterpret_cast<Maths::Vector4*>(&data[offset]));
 				break;
 			case GLShaderUniformDeclaration::Type::MAT3:
-				SetUniformMat3(uniform->GetLocation(), *reinterpret_cast<glm::mat3*>(&data[offset]));
+				SetUniformMat3(uniform->GetLocation(), *reinterpret_cast<Maths::Matrix3*>(&data[offset]));
 				break;
 			case GLShaderUniformDeclaration::Type::MAT4:
-				SetUniformMat4(uniform->GetLocation(), *reinterpret_cast<glm::mat4*>(&data[offset]));
+				SetUniformMat4(uniform->GetLocation(), *reinterpret_cast<Maths::Matrix4*>(&data[offset]));
 				break;
 			case GLShaderUniformDeclaration::Type::MAT4ARRAY:
-				SetUniformMat4Array(uniform->GetLocation(), count, *reinterpret_cast<glm::mat4*>(&data[offset]));
+				SetUniformMat4Array(uniform->GetLocation(), count, *reinterpret_cast<Maths::Matrix4*>(&data[offset]));
 				break;
 			case GLShaderUniformDeclaration::Type::STRUCT:
 				SetUniformStruct(uniform, data, offset);
@@ -905,22 +905,22 @@ namespace Easel {
 				SetUniform1ui(field.GetLocation(), *reinterpret_cast<uint32_t*>(&data[offset]));
 				break;
 			case GLShaderUniformDeclaration::Type::VEC2:
-				SetUniform2f(field.GetLocation(), *reinterpret_cast<glm::vec2*>(&data[offset]));
+				SetUniform2f(field.GetLocation(), *reinterpret_cast<Maths::Vector2*>(&data[offset]));
 				break;
 			case GLShaderUniformDeclaration::Type::VEC3:
-				SetUniform3f(field.GetLocation(), *reinterpret_cast<glm::vec3*>(&data[offset]));
+				SetUniform3f(field.GetLocation(), *reinterpret_cast<Maths::Vector3*>(&data[offset]));
 				break;
 			case GLShaderUniformDeclaration::Type::VEC4:
-				SetUniform4f(field.GetLocation(), *reinterpret_cast<glm::vec4*>(&data[offset]));
+				SetUniform4f(field.GetLocation(), *reinterpret_cast<Maths::Vector4*>(&data[offset]));
 				break;
 			case GLShaderUniformDeclaration::Type::MAT3:
-				SetUniformMat3(field.GetLocation(), *reinterpret_cast<glm::mat3*>(&data[offset]));
+				SetUniformMat3(field.GetLocation(), *reinterpret_cast<Maths::Matrix3*>(&data[offset]));
 				break;
 			case GLShaderUniformDeclaration::Type::MAT4:
-				SetUniformMat4(field.GetLocation(), *reinterpret_cast<glm::mat4*>(&data[offset]));
+				SetUniformMat4(field.GetLocation(), *reinterpret_cast<Maths::Matrix4*>(&data[offset]));
 				break;
 			case GLShaderUniformDeclaration::Type::MAT4ARRAY:
-				SetUniformMat4Array(field.GetLocation(), count, *reinterpret_cast<glm::mat4*>(&data[offset]));
+				SetUniformMat4Array(field.GetLocation(), count, *reinterpret_cast<Maths::Matrix4*>(&data[offset]));
 				break;
 			default:
 				EASEL_ASSERT(false, "Unknown type!");
@@ -952,22 +952,22 @@ namespace Easel {
 			SetUniform1iv(GetUniformLocation(name), value, count);
 		}
 
-		void GLShader::SetUniform2f(const std::string& name, const glm::vec2& vector) const {
+		void GLShader::SetUniform2f(const std::string& name, const Maths::Vector2& vector) const {
 			EASEL_PROFILE_FUNCTION();
 			SetUniform2f(GetUniformLocation(name), vector);
 		}
 
-		void GLShader::SetUniform3f(const std::string& name, const glm::vec3& vector) const {
+		void GLShader::SetUniform3f(const std::string& name, const Maths::Vector3& vector) const {
 			EASEL_PROFILE_FUNCTION();
 			SetUniform3f(GetUniformLocation(name), vector);
 		}
 
-		void GLShader::SetUniform4f(const std::string& name, const glm::vec4& vector) const {
+		void GLShader::SetUniform4f(const std::string& name, const Maths::Vector4& vector) const {
 			EASEL_PROFILE_FUNCTION();
 			SetUniform4f(GetUniformLocation(name), vector);
 		}
 
-		void GLShader::SetUniformMat4(const std::string& name, const glm::mat4& matrix) const {
+		void GLShader::SetUniformMat4(const std::string& name, const Maths::Matrix4& matrix) const {
 			EASEL_PROFILE_FUNCTION();
 			SetUniformMat4(GetUniformLocation(name), matrix);
 		}
@@ -992,28 +992,28 @@ namespace Easel {
 			GLCall(glUniform1iv(location, count, value));
 		}
 
-		void GLShader::SetUniform2f(uint32_t location, const glm::vec2& vector) {
+		void GLShader::SetUniform2f(uint32_t location, const Maths::Vector2& vector) {
 			GLCall(glUniform2f(location, vector.x, vector.y));
 		}
 
-		void GLShader::SetUniform3f(uint32_t location, const glm::vec3& vector) {
+		void GLShader::SetUniform3f(uint32_t location, const Maths::Vector3& vector) {
 			GLCall(glUniform3f(location, vector.x, vector.y, vector.z));
 		}
 
-		void GLShader::SetUniform4f(uint32_t location, const glm::vec4& vector) {
+		void GLShader::SetUniform4f(uint32_t location, const Maths::Vector4& vector) {
 			GLCall(glUniform4f(location, vector.x, vector.y, vector.z, vector.w));
 		}
 
-		void GLShader::SetUniformMat3(uint32_t location, const glm::mat3& matrix) {
-			GLCall(glUniformMatrix3fv(location, 1, GL_FALSE /*GLTRUE*/, glm::value_ptr(matrix))); // &matrix.values[0]));
+		void GLShader::SetUniformMat3(uint32_t location, const Maths::Matrix3& matrix) {
+			GLCall(glUniformMatrix3fv(location, 1, GL_FALSE /*GLTRUE*/, Maths::ValuePointer(matrix))); // &matrix.values[0]));
 		}
 
-		void GLShader::SetUniformMat4(uint32_t location, const glm::mat4& matrix) {
-			GLCall(glUniformMatrix4fv(location, 1, GL_FALSE /*GLTRUE*/, glm::value_ptr(matrix)));
+		void GLShader::SetUniformMat4(uint32_t location, const Maths::Matrix4& matrix) {
+			GLCall(glUniformMatrix4fv(location, 1, GL_FALSE /*GLTRUE*/, Maths::ValuePointer(matrix)));
 		}
 
-		void GLShader::SetUniformMat4Array(uint32_t location, uint32_t count, const glm::mat4& matrix) {
-			GLCall(glUniformMatrix4fv(location, count, GL_FALSE /*GLTRUE*/, glm::value_ptr(matrix)));
+		void GLShader::SetUniformMat4Array(uint32_t location, uint32_t count, const Maths::Matrix4& matrix) {
+			GLCall(glUniformMatrix4fv(location, count, GL_FALSE /*GLTRUE*/, Maths::ValuePointer(matrix)));
 		}
 
 		Shader* GLShader::CreateFuncGL(const std::string& filePath) {

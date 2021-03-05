@@ -1,8 +1,7 @@
 #pragma once
 
 #include "Easel/Graphics/API/RenderPass.h"
-
-#include <glm/glm.hpp>
+#include "Easel/Maths/Maths.h"
 
 namespace Easel {
 
@@ -14,7 +13,7 @@ namespace Easel {
 			~GLRenderPass();
 
 			bool Init(const RenderPassInfo& renderpassCI);
-			void BeginRenderpass(CommandBuffer* commandBuffer, const glm::vec4& clearColour, Framebuffer* frame, SubPassContents contents, uint32_t width, uint32_t height, bool beginCommandBuffer = true) const override;
+			void BeginRenderpass(CommandBuffer* commandBuffer, const Maths::Vector4& clearColour, Framebuffer* frame, SubPassContents contents, uint32_t width, uint32_t height, bool beginCommandBuffer = true) const override;
 			void EndRenderpass(CommandBuffer* commandBuffer, bool endCommandBuffer = true) override;
 			int GetAttachmentCount() const override { return m_ClearCount; };
 

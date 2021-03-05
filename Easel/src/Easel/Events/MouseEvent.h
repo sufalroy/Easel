@@ -9,7 +9,8 @@ namespace Easel {
 
 	class EASEL_EXPORT MouseMovedEvent : public Event {
 	public:
-		MouseMovedEvent(const float x, const float y) : m_MouseX(x), m_MouseY(y) {}
+		MouseMovedEvent(const float x, const float y) 
+			: m_MouseX(x), m_MouseY(y) {}
 
 		inline float GetX() const { return m_MouseX; }
 		inline float GetY() const { return m_MouseY; }

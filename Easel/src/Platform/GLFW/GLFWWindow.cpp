@@ -64,7 +64,8 @@ namespace Easel {
 	}
 
 	bool GLFWWindow::Init(const WindowProperties& properties) {
-
+		
+		EASEL_PROFILE_FUNCTION();
 		EASEL_CORE_INFO("Creating window - Title : {0}, Width : {1}, Height : {2}", properties.Title, properties.Width, properties.Height);
 
 		if (!s_GLFWInitialized) {
@@ -254,10 +255,14 @@ namespace Easel {
 	}
 
 	void GLFWWindow::SetWindowTitle(const std::string& title) {
+		
+		EASEL_PROFILE_FUNCTION();
 		glfwSetWindowTitle(m_Handle, title.c_str());
 	}
 
 	void GLFWWindow::ToggleVSync() {
+
+		EASEL_PROFILE_FUNCTION();
 		if (m_VSync) {
 			SetVSync(false);
 		}
@@ -270,6 +275,7 @@ namespace Easel {
 
 	void GLFWWindow::SetVSync(bool set) {
 
+		EASEL_PROFILE_FUNCTION();
 		if (set) {
 			m_VSync = true;
 			glfwSwapInterval(1);
@@ -282,18 +288,24 @@ namespace Easel {
 		EASEL_CORE_INFO("VSync : {0}", m_VSync ? "True" : "False");
 	}
 
-	void GLFWWindow::OnUpdate()
-	{
-#ifdef EASEL_RENDER_API_OPENGL
-		if (m_Data.m_RenderAPI == Graphics::RenderAPI::OPENGL)
-			glfwSwapBuffers(m_Handle);
-#endif
+	void GLFWWindow::OnUpdate() {
 
-		glfwPollEvents();
+		EASEL_PROFILE_FUNCTION();
+#ifdef EASEL_RENDER_API_OPENGL
+		if (m_Data.m_RenderAPI == Graphics::RenderAPI::OPENGL) {
+			EASEL_PROFILE_SCOPE("GLFW SwapBuffers");
+			glfwSwapBuffers(m_Handle);
+		}	
+#endif
+		{
+			EASEL_PROFILE_SCOPE("GLFW PollEvents");
+			glfwPollEvents();
+		}
 	}
 
 	void GLFWWindow::SetBorderlessWindow(bool borderless) {
 
+		EASEL_PROFILE_FUNCTION();
 		if (borderless) {
 			glfwWindowHint(GLFW_DECORATED, false);
 		}
@@ -303,6 +315,8 @@ namespace Easel {
 	}
 
 	void GLFWWindow::HideMouse(bool hide) {
+
+		EASEL_PROFILE_FUNCTION();
 		if (hide) {
 			glfwSetInputMode(m_Handle, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 		}
@@ -311,11 +325,14 @@ namespace Easel {
 		}
 	}
 
-	void GLFWWindow::SetMousePosition(const glm::vec2& pos) {
+	void GLFWWindow::SetMousePosition(const Maths::Vector2& pos) {
+		
+		EASEL_PROFILE_FUNCTION();
 		glfwSetCursorPos(m_Handle, pos.x, pos.y);
 	}
 
 	void GLFWWindow::MakeDefault() {
+
 		CreateFunc = CreateFuncGLFW;
 	}
 
@@ -324,6 +341,8 @@ namespace Easel {
 	}
 
 	void GLFWWindow::UpdateCursorImGui() {
+		
+		EASEL_PROFILE_FUNCTION();
 		ImGuiIO& io = ImGui::GetIO();
 		ImGuiMouseCursor imgui_cursor = ImGui::GetMouseCursor();
 

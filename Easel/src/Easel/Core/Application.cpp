@@ -85,9 +85,9 @@ namespace Easel {
 		return 0;
 	}
 
-	glm::vec2 Application::GetWindowSize() const {
+	Maths::Vector2 Application::GetWindowSize() const {
 
-		return glm::vec2(static_cast<float>(m_Window->GetWidth()), static_cast<float>(m_Window->GetHeight()));
+		return Maths::Vector2(static_cast<float>(m_Window->GetWidth()), static_cast<float>(m_Window->GetHeight()));
 	}
 
 	bool Application::OnFrame() {

@@ -41,33 +41,33 @@ namespace Easel {
 		}
 
 		template<>
-		void BufferLayout::Push<glm::vec2>(const std::string& name, bool normalized) {
+		void BufferLayout::Push<Maths::Vector2>(const std::string& name, bool normalized) {
 			
-			Push(name, Format::R32G32_FLOAT, sizeof(glm::vec2), normalized);
+			Push(name, Format::R32G32_FLOAT, sizeof(Maths::Vector2), normalized);
 		}
 
 		template<>
-		void BufferLayout::Push<glm::vec3>(const std::string& name, bool normalized) {
+		void BufferLayout::Push<Maths::Vector3>(const std::string& name, bool normalized) {
 
-			Push(name, Format::R32G32B32_FLOAT, sizeof(glm::vec3), normalized);
+			Push(name, Format::R32G32B32_FLOAT, sizeof(Maths::Vector3), normalized);
 		}
 
 		template<>
-		void BufferLayout::Push<glm::vec4>(const std::string& name, bool normalized) {
+		void BufferLayout::Push<Maths::Vector4>(const std::string& name, bool normalized) {
 
-			Push(name, Format::R32G32B32A32_FLOAT, sizeof(glm::vec4), normalized);
+			Push(name, Format::R32G32B32A32_FLOAT, sizeof(Maths::Vector4), normalized);
 		}
 
 		template<>
-		void BufferLayout::Push<glm::ivec3>(const std::string& name, bool normalized) {
+		void BufferLayout::Push<Maths::IntVector3>(const std::string& name, bool normalized) {
 
-			Push(name, Format::R32G32B32_INT, sizeof(glm::ivec3), normalized);
+			Push(name, Format::R32G32B32_INT, sizeof(Maths::IntVector3), normalized);
 		}
 
 		template<>
-		void BufferLayout::Push<glm::ivec4>(const std::string& name, bool normalized) {
+		void BufferLayout::Push<Maths::IntVector4>(const std::string& name, bool normalized) {
 
-			Push(name, Format::R32G32B32A32_INT, sizeof(glm::ivec4), normalized);
+			Push(name, Format::R32G32B32A32_INT, sizeof(Maths::IntVector4), normalized);
 		}
 	}
 }

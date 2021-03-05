@@ -2,8 +2,8 @@
 #include "Easel/Graphics/API/Texture.h"
 #include "Easel/Graphics/API/Shader.h"
 #include "Easel/Core/Reference.h"
+#include "Easel/Maths/Maths.h"
 
-#include <glm/glm.hpp>
 #include <cereal/cereal.hpp>
 
 namespace Easel {
@@ -19,10 +19,10 @@ namespace Easel {
 		const float PBR_WORKFLOW_SPECULAR_GLOSINESS = 2.0f;
 
 		struct MaterialProperties {
-			glm::vec4 albedoColour = glm::vec4(1.0f, 0.0f, 1.0f, 1.0f);
-			glm::vec4 roughnessColour = glm::vec4(1.0f, 0.0f, 1.0f, 1.0f);
-			glm::vec4 metallicColour = glm::vec4(0.0f, 1.0f, 0.0f, 1.0f);
-			glm::vec4 emissiveColour = glm::vec4(0.0f, 0.0f, 0.0f, 1.0f);
+			Maths::Vector4 albedoColour =    Maths::Vector4(1.0f, 0.0f, 1.0f, 1.0f);
+			Maths::Vector4 roughnessColour = Maths::Vector4(1.0f, 0.0f, 1.0f, 1.0f);
+			Maths::Vector4 metallicColour =  Maths::Vector4(0.0f, 1.0f, 0.0f, 1.0f);
+			Maths::Vector4 emissiveColour =  Maths::Vector4(0.0f, 0.0f, 0.0f, 1.0f);
 			float usingAlbedoMap = 1.0f;
 			float usingMetallicMap = 1.0f;
 			float usingRoughnessMap = 1.0f;
