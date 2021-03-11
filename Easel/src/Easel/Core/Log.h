@@ -3,10 +3,10 @@
 #include "Easel/Core/Base.h"
 
 #ifdef EASEL_PLATFORM_WINDOWS
-	#ifndef NOMINMAX
-		#define NOMINMAX
-	#endif // !NOMINMAX
-#endif // EASEL_PLATFORM_WINDOWS
+#ifndef NOMINMAX
+#define NOMINMAX // For windows.h
+#endif
+#endif
 
 #pragma warning(push, 0)
 #include <spdlog/spdlog.h>

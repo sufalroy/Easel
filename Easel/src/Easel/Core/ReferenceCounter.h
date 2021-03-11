@@ -4,6 +4,8 @@
 
 namespace Easel {
 
+	// Atomic functions, these are used for multithread safe reference counters!
+
 #ifdef NO_THREADS
 
 	/* Bogus implementation unaware of multiprocessing */
@@ -106,7 +108,6 @@ namespace Easel {
 	}
 
 #elif defined(_MSC_VER)
-
 	// For MSVC use a separate compilation unit to prevent windows.h from polluting
 	// the global namespace.
 
@@ -128,13 +129,15 @@ namespace Easel {
 	//no threads supported?
 	#error Must provide atomic functions for this platform or compiler!
 
-#endif // NO_THREADS
+#endif
 
 	struct EASEL_EXPORT ReferenceCounter {
 		
 		uint32_t count;
 
 	public:
+		// destroy() is called when weak_count_ drops to zero.
+
 		inline bool ref() {
 			return atomic_conditional_increment(&count) != 0;
 		}

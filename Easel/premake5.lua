@@ -15,9 +15,6 @@ project "Easel"
 	{
 		"src/**.h",
 		"src/**.cpp",
-		"3rdparty/glm/glm/**.hpp",
-		"3rdparty/glm/glm/**.inl",
-		"3rdparty/tracy/TracyClient.cpp",
 	}
 
 	includedirs

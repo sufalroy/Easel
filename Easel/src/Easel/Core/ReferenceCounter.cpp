@@ -134,8 +134,7 @@ namespace Easel {
 		return _atomic_exchange_if_greater_impl(pw, val);
 	}
 }
-
-#endif // defined(_MSC_VER)
+#endif 
 
 
 
