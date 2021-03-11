@@ -16,7 +16,6 @@ namespace Easel {
 
 		Ref<Texture2D> Material::s_DefaultTexture = nullptr;
 
-		
 		Material::Material(Ref<Shader>& shader, const MaterialProperties& properties, const PBRMaterialTextures& textures)
 			: m_PBRMaterialTextures(textures)
 			, m_Shader(shader) 
